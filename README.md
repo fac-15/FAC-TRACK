@@ -74,3 +74,18 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
   }
 }
 
+### Databases
+
+#### Creating a local database
+- Connect to postgres, by typing `psql` or `pgcli` in the terminal.
+- Create the database by typing **CREATE DATABASE** `<database_name>`;.
+- Create a superuser with a password by typing **CREATE USER** `<user_name>` **WITH SUPERUSER PASSWORD** '`<password>`'; (the password needs to be in quotes, otherwise you get an error).
+- Change ownership of the database to the new user by typing **ALTER DATABASE** `<database_name>` **OWNER TO** `<user_name>`;
+
+#### Add these variables to .config file in your route
+
+LOCAL_URL = postgres://admin:password@localhost:5432/factrack
+TEST_DB_URL = postgres://admin:password@localhost:5432/factracktest
+DATABASE_URL = postgres://yvwuppreintlxw:9e23c7dc108bb8f5469bac20a863cfccda945aad47a243c6b0ac5ee7812ccd27@ec2-54-247-82-210.eu-west-1.compute.amazonaws.com:5432/d5ptskefj5nmt1
+SECRET = "toadd"
+
