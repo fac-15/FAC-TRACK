@@ -25,3 +25,52 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 ## Database Design 
 
 ![fac track db schema](https://user-images.githubusercontent.com/39189687/51178718-65f4be00-18bb-11e9-9b51-058bb82786bc.jpeg)
+
+
+
+## Setup
+
+### JSON
+
+{
+  "name": "fac-track",
+  "version": "1.0.0",
+  "description": "Application to allow for FAC students to track their progress throught the learning weeks",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-15/FAC-TRACK.git"
+  },
+  "author": "Jason, Hannah, Charmaine, Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-15/FAC-TRACK/issues"
+  },
+  "homepage": "https://github.com/fac-15/FAC-TRACK#readme",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "body-parser": "^1.18.3",
+    "serve-favicon": "^2.5.0",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "pg": "^7.7.1"
+  },
+  "devDependencies": {
+    "codecov": "^3.1.0",
+    "nodemon": "^1.18.8",
+    "supertest": "^3.3.0",
+    "eslint": "^5.12.0",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^3.4.0",
+    "jest": "^23.6.0"
+  }
+}
+
