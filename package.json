@@ -4,7 +4,9 @@
   "description": "Application to allow for FAC students to track their progress throught the learning weeks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,23 @@
   },
   "homepage": "https://github.com/fac-15/FAC-TRACK#readme",
   "dependencies": {
+    "env2": "^2.2.2",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "body-parser": "^1.18.3",
+    "serve-favicon": "^2.5.0",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "pg": "^7.7.1"
+  },
+  "devDependencies": {
+    "codecov": "^3.1.0",
+    "nodemon": "^1.18.8",
+    "supertest": "^3.3.0",
     "eslint": "^5.12.0",
     "eslint-config-node": "^4.0.0",
-    "eslint-config-prettier": "^3.4.0"
+    "eslint-config-prettier": "^3.4.0",
+    "jest": "^23.6.0"
   }
 }

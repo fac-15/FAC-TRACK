@@ -59,3 +59,17 @@ typings/
 
 # next.js build output
 .next
+
+
+#sass files
+.sass-cache/
+.css.map .sass.map
+*.scss.map
+
+#OS generated files
+
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
