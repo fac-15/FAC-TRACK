@@ -1,5 +1,8 @@
 language: node_js
 node_js:
- - "node"
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - "node"
+after_success: npm run coverage
+notifications:
+  email:
+  on_success: never
+  on_failure: never
