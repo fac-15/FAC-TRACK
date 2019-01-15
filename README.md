@@ -28,6 +28,8 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 ![fac track db schema](https://user-images.githubusercontent.com/39189687/51178718-65f4be00-18bb-11e9-9b51-058bb82786bc.jpeg)
 
+![screen shot 2019-01-15 at 17 42 49](https://user-images.githubusercontent.com/25176118/51198806-2c3cab00-18ed-11e9-8e67-a8eb07bed716.png)
+
 
 
 ## Setup
@@ -93,4 +95,9 @@ TEST_DB_URL = postgres://admin:password@localhost:5432/factracktest
 DATABASE_URL = postgres://yvwuppreintlxw:9e23c7dc108bb8f5469bac20a863cfccda945aad47a243c6b0ac5ee7812ccd27@ec2-54-247-82-210.eu-west-1.compute.amazonaws.com:5432/d5ptskefj5nmt1
 
 SECRET = "toadd"
+
+
+### Testing
+
+
 
