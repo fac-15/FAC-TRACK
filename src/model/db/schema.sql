@@ -1,0 +1,32 @@
+BEGIN;
+
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY NOT NULL,
+  email VARCHAR(155) NOT NULL,
+  password VARCHAR(155) NOT NULL,
+  logged_in BOOLEAN DEFAULT false
+);
+
+CREATE TABLE weeks(
+  id SERIAL PRIMARY KEY NOT NULL,
+  week_name VARCHAR(200) NOT NULL
+);
+
+
+CREATE TABLE tasks(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(155) NOT NULL,
+  week_id INTEGER REFERENCES weeks(id)
+);
+
+
+CREATE TABLE logs(
+  id SERIAL PRIMARY KEY NOT NULL,
+  completion BOOLEAN NOT NULL,
+  confidence INTEGER,
+  notes VARCHAR(1000),
+  task_id INTEGER REFERENCES tasks(id),
+  user_id INTEGER REFERENCES users(id)
+);
+
+COMMIT;
