@@ -30,6 +30,7 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 ![screen shot 2019-01-15 at 17 42 49](https://user-images.githubusercontent.com/25176118/51198806-2c3cab00-18ed-11e9-8e67-a8eb07bed716.png)
 
+![screen shot 2019-01-15 at 18 39 28](https://user-images.githubusercontent.com/25176118/51201793-f26fa280-18f4-11e9-95dd-93ac5e8885c5.png)
 
 
 ## Setup
