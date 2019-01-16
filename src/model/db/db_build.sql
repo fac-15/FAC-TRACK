@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS tasks CASCADE;
 CREATE TABLE tasks(
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(155) NOT NULL,
-  week_id INTEGER REFERENCES weeks(id),
+  week_id INTEGER,
   repo_link VARCHAR(200) NOT NULL
 );
 
@@ -55,14 +55,19 @@ insert into users (email, password, logged_in) values ('lfrankomf@webs.com', 'yO
 INSERT INTO weeks (week_name) values ('toolkit');
 
 
-insert into tasks (name, week_id, repo_link) values ('Tin', 1, 'http://domain');
-insert into tasks (name, week_id, repo_link) values ('Toughjoyfax', 1, 'http://irs.gov/ligula/suspend');
-insert into tasks (name, week_id, repo_link) values ('Hatity', 1, 'http://youtube.com/eros/susp');
-insert into tasks (name, week_id, repo_link) values ('Konklux', 1, 'http://vi');
-insert into tasks (name, week_id, repo_link) values ('Matsoft', 1, 'https://digg.com/suspendisse/potenti.jsp?nascetur=vulputat');
-insert into tasks (name, week_id, repo_link) values ('Span', 1, 'https://hatrbaddredfe.com');
-insert into tasks (name, week_id, repo_link) values ('Tin', 1, 'http://cam.ac.uk/quam/nec/dui/luctus.png?erat=interdum&volutpat=venena');
-insert into tasks (name, week_id, repo_link) values ('Cardify', 1, 'http://amazonaws.com/quis/augue/luctus.png?erat=nunc&nulla');
+-- week 1
+insert into tasks (name, week_id, repo_link) values ('Accessibility Workshop', 1, 'https://github.com/foundersandcoders/web-accessibility/blob/master/putting-yourself-in-someone-elses-shoes.md');
+insert into tasks (name, week_id, repo_link) values ('Github Scavenger Hunt', 1, 'https://github.com/foundersandcoders/master-reference/blob/master/coursebook/general/github-scavenger-hunt.md');
+insert into tasks (name, week_id, repo_link) values ('Accessibility Challenge', 1, 'https://github.com/foundersandcoders/accessibility-challenge');
+-- week 2
+insert into tasks (name, week_id, repo_link) values ('Test Driven Development workshop: Fizzbuzz', 2, 'https://github.com/foundersandcoders/fizzbuzz');
+insert into tasks (name, week_id, repo_link) values ('DOM manipulation challenge', 2, 'https://github.com/foundersandcoders/DOM-manipulation-Challenge');
+insert into tasks (name, week_id, repo_link) values ('Pure functions workshop', 2, 'https://github.com/foundersandcoders/ws-pure-functions-easy-testing');
+-- week 3
+insert into tasks (name, week_id, repo_link) values ('Introducing APIs', 3, 'https://github.com/foundersandcoders/api-workshop');
+insert into tasks (name, week_id, repo_link) values ('XHR workshop', 3, 'https://github.com/foundersandcoders/xhr-workshop');
+-- week 4
+insert into tasks (name, week_id, repo_link) values ('Node Intro Workshop', 3, 'https://github.com/foundersandcoders/Node-Intro-Workshop');
 
 
 INSERT INTO logs (completion, confidence, notes) values ('TRUE', '1', 'test database notes');

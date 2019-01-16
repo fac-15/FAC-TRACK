@@ -36,7 +36,7 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 ## Setup
 
 ### JSON
-
+```
 {
   "name": "fac-track",
   "version": "1.0.0",
@@ -78,7 +78,7 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
     "jest": "^23.6.0"
   }
 }
-
+```
 ### Databases
 
 #### Creating a local database for LOCAL_URL (factrack) And TEST_DB_URL (factracktest )
@@ -87,18 +87,6 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 - Create a superuser with a password by typing **CREATE USER** `<user_name>` **WITH SUPERUSER PASSWORD** '`<password>`'; (the password needs to be in quotes, otherwise you get an error).
 - Change ownership of the database to the new user by typing **ALTER DATABASE** `<database_name>` **OWNER TO** `<user_name>`;
 
-#### Add these variables to .config file in your route
 
-LOCAL_URL = postgres://admin:password@localhost:5432/factrack
-
-TEST_DB_URL = postgres://admin:password@localhost:5432/factracktest
-
-DATABASE_URL = postgres://yvwuppreintlxw:9e23c7dc108bb8f5469bac20a863cfccda945aad47a243c6b0ac5ee7812ccd27@ec2-54-247-82-210.eu-west-1.compute.amazonaws.com:5432/d5ptskefj5nmt1
-
-SECRET = "toadd"
-
-
-### Testing
-
-
-
+### Database build
+- node src/model/db/db_build.js

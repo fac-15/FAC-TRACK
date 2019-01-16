@@ -1,5 +1,6 @@
 module.exports = {
 
-    getAllData: require('./getAllData')
+    getAllWeeks: require('./getAllWeeks'),
+    getTasksByWeek: require('./getTasksByWeek')
 
 };
