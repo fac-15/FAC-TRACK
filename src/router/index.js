@@ -8,19 +8,32 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
+
+
 // dashboard route
 router.get("/dashboard", (req, res) => {
+  
+  // const name = req.params.name;
   res.render("dashboard");
 });
 
-// week test route will have to be dynamic
-// https://stackoverflow.com/questions/25623041/how-to-configure-dynamic-routes-with-express-js
 
 // week route(s)
-router.get('/:name(node|express|testing)?', (req, res) => {
-  const name = req.params.name;
-  res.render('week', {name});
+router.get('/week-:name(1_toolkit|2_testing|3_api|4_node-core|5_node-2|6_postgresql|7_authentication|8_express-handlebars)?', (req, res) => {
+
+  // write a database query to get task data (by week) for the user:
+  // - tasks complete
+  // - aggregate confidence
+  
+  // use the weekName to get tasks for the week
+  const weekName = req.params.name.split('_')[1];
+  res.render('week', {name: weekName});
 });
+
+
+// task routes
+// 1 - 8
+
 
 
 // error pages
