@@ -9,6 +9,7 @@ const helpers = require("./views/helpers/index");
 
 const app = express();
 
+// set views
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.engine(
@@ -36,5 +37,7 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.set("port", process.env.PORT || 5002);
 app.use(routes);
+
+
 
 module.exports = app;
