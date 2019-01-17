@@ -62,14 +62,14 @@ insert into tasks (name, week_id, repo_link) values ('Node Intro Workshop', 3, '
 
 
 -- Users table
-insert into users (username, email, password, logged_in) values ('sheila', 'bgeri0@illinois.edu', '2kb3PLnlE3');
-insert into users (username, email, password, logged_in) values ('dave', 'kgeddes1@mysql.com', 'C7Zbx09');
-insert into users (username, email, password, logged_in) values ('francis', 'drickeard2@issuu.com', 'NlOb9zFWz');
-insert into users (username, email, password, logged_in) values ('charlotte', 'kpoundesford3@i2i.jp', '2EXhiV');
-insert into users (username, email, password, logged_in) values ('audrey', 'tsebborn4@mapquest.com', 'm4amCd3zewy4');
-insert into users (username, email, password, logged_in) values ('craig', 'bsehorsch5@woothemes.com', 'qPstcGmT');
-insert into users (username, email, password, logged_in) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
-insert into users (username, email, password, logged_in) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
+insert into users (username, email, password) values ('sheila', 'bgeri0@illinois.edu', '2kb3PLnlE3');
+insert into users (username, email, password) values ('dave', 'kgeddes1@mysql.com', 'C7Zbx09');
+insert into users (username, email, password) values ('francis', 'drickeard2@issuu.com', 'NlOb9zFWz');
+insert into users (username, email, password) values ('charlotte', 'kpoundesford3@i2i.jp', '2EXhiV');
+insert into users (username, email, password) values ('audrey', 'tsebborn4@mapquest.com', 'm4amCd3zewy4');
+insert into users (username, email, password) values ('craig', 'bsehorsch5@woothemes.com', 'qPstcGmT');
+insert into users (username, email, password) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
+insert into users (username, email, password) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
 
 
 
