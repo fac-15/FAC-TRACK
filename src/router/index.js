@@ -46,8 +46,9 @@ router.get(
 
     const weekNum = req.params.name.split("_")[0];
 
+    // get data for dave
     dbhelpers
-      .getTasksByWeek(weekNum)
+      .getTaskForUser('dave', weekNum)
       .then(data => {
         console.log("response from getTasksByWeek/router index: ", data);
         res.render("week", { name: weekName, tasks: data });

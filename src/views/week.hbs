@@ -4,8 +4,10 @@
         <ul>
         {{#each tasks}}
 
-        <li> <h3> Workshop Name : {{name}} </h3>
-            <a href = "{{repo_link}}"> Repo Link </a>
+        <li>
+          <h3> Workshop Name : {{name}} </h3>
+            <p>confidence: {{confidence}}</p>
+            <p>completion: {{completion}}</p>
           </li>
         {{/each}}
       </ul>
