@@ -29,6 +29,15 @@ router.get('/week-:name(1_toolkit|2_testing|3_api|4_node-core|5_node-2|6_postgre
   const weekName = req.params.name.split('_')[1];
   res.render('week', {name: weekName});
 });
+router.get('/week-1_toolkit/workshop_1', (req, res) =>{
+
+  res.render('log');
+
+  //get repo link
+
+})
+
+router.post('')
 
 
 // task routes
