@@ -4,45 +4,66 @@ const testBuild = require("../src/model/db/test_db_build.js"); // could also be 
 // get database queries to test
 const queryIndex = require("../src/model/db_queries/index.js");
 
+/*
+jest stuff
 
-// database test
-// queryIndex.getAllData
+assertions
+https://jestjs.io/docs/en/expect#expectassertionsnumber
 
-// testing database with jest
-// http://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/
+NOTE: db_build.sql, not test build file seems to be called here.
+Test sql just has week 1, but getAllWeeks returns 4 of them
+
+*/
 
 
-describe('Test getAllData function', () => {
-    beforeAll(() => {
-        // mongoDB.connect();
+
+// get all weeks
+// queryIndex.getAllWeeks
+const allWeeks = [
+    { id: 1, week_name: 'Toolkit'},
+    { id: 2, week_name: 'Testing'},
+    { id: 3, week_name: 'API'},
+    { id: 4, week_name: 'Node Core'}
+];
+
+test('getAllWeeks returns weeks 1 - 4', () => {
+    testBuild ( (error, response) => {
+        if (error) {
+            return error;
+        }
+        expect.assertions(1);
+        return expect(queryIndex.getAllWeeks()).resolves.toEqual(allWeeks);
+
     });
-    afterAll((done) => {
-        // mongoDB.disconnect(done);
-        // probably test the queryIndex.getAllData function here
+});
 
+
+// get tasks by week
+// queryIndex.getTasksByWeek
+const weekTwoTasks = [
+    { name:'Test Driven Development workshop: Fizzbuzz', repo_link: 'https://github.com/foundersandcoders/fizzbuzz' },
+    { name:'DOM manipulation challenge', repo_link: 'https://github.com/foundersandcoders/DOM-manipulation-Challenge' },
+    { name:'Pure functions workshop', repo_link: 'https://github.com/foundersandcoders/ws-pure-functions-easy-testing' }
+];
+
+
+
+test('getTasksByWeek for week 2', () => {
+    testBuild ( (error, response) => {
+        if (error) {
+            return error;
+        }
+        expect.assertions(1);
+        expect(queryIndex.getTasksByWeek(2)).resolves.toEqual(weekTwoTasks);
     });
-}
+});
 
-
-
-// test("getAllData function returns subject", t => {
-//     testBuild((error, response) => {
-//       if (error) {
-//         console.log("testBuild error: ", error);
-//       } else {
-//         queryIndex.getAllData((err, res) => {
-//           if (err) {
-//             console.log("getTalks error: ", err);
-//           } else {
-//             // console.log("result from getTalks: ", res);
-//             t.deepEqual(
-//               res[0].subject,
-//               "SCSS",
-//               "The first entered talk subject in the test database should be SCSS"
-//             );
-//             t.end();
-//           }
-//         });
-//       }
-//     });
-// });
+test('getTasksByWeek for week 0', () => {
+    testBuild ( (error, response) => {
+        if (error) {
+            return error;
+        }
+        expect.assertions(1);
+        expect(queryIndex.getTasksByWeek(0)).resolves.toEqual([]);
+    });
+});
