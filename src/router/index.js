@@ -34,7 +34,6 @@ router.get('/week-1_toolkit/workshop_1', (req, res) =>{
 
 })
 
-router.post('')
 
 
 // task routes
