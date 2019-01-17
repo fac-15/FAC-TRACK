@@ -23,7 +23,8 @@ router.get("/dashboard", (req, res) => {
       res.render("dashboard", { weeks: data });
     })
     .catch(err => {
-      console.log("/dashboard error: ", err);
+      // console.log("/dashboard error: ", err);
+      reject(err);
     });
 });
 
@@ -45,7 +46,8 @@ router.get(
         res.render("week", { name: weekName, tasks: data, number: weekNum });
       })
       .catch(err => {
-        console.log("/weeks error: ", err);
+        // console.log("/weeks error: ", err);
+        res.status(err, 500);
       });
   }
 );
@@ -68,7 +70,8 @@ router.get("/:week/:tasks/", (req, res) => {
          res.render("log", { name: weekName, tasks: taskName, repo_link: data });
        })
        .catch(err => {
-         console.log("/weeks error: ", err);
+        //  console.log("/weeks error: ", err);
+        res.status(err, 500);
        });
 
 });
