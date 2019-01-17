@@ -4,12 +4,23 @@ const url = require("url");
 const env = require("env2");
 env("./config.env");
 
-if (!process.env.LOCAL_URL) {
-  throw new Error("Evnironment variable LOCAL_URL must be set");
+// get local database by default
+let DB_URL = process.env.LOCAL_URL;
+
+// get test database for tests
+if (process.env.NODE_ENV === "test") {
+  DB_URL = process.env.TEST_DB_URL;
 }
 
-const params = url.parse(process.env.LOCAL_URL);
+// no database, throw an error
+if (!DB_URL) {
+  throw new Error("Environment variable DATABASE_URL must be set");
+}
+
+const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(":");
+
+// set options
 const options = {
   host: params.hostname,
   port: params.port,

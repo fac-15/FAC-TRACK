@@ -1,11 +1,14 @@
-Daily log - https://docs.google.com/spreadsheets/d/1mT5qh-N_ikzUz1FzJpAItd6elA6nm9ASVz7hDJK2Zmc/edit?usp=sharing
+Daily log - [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1mT5qh-N_ikzUz1FzJpAItd6elA6nm9ASVz7hDJK2Zmc/edit?usp=sharing)
 
-Travis link - https://travis-ci.com/fac-15/FAC-TRACK
+Travis link - [https://travis-ci.com/fac-15/FAC-TRACK](https://travis-ci.com/fac-15/FAC-TRACK)
 
-Codecov link - https://codecov.io/gh/fac-15/FAC-TRACK
+Codecov link - [https://codecov.io/gh/fac-15/FAC-TRACK](https://codecov.io/gh/fac-15/FAC-TRACK)
 
-Heroku link - https://fac-track.herokuapp.com/
+Heroku link - [https://fac-track.herokuapp.com/](https://fac-track.herokuapp.com/)
 
+All Weeks and Tasks in FAC Curriculum - [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1MwHAFfLx2M5QbLrmUAFfXMMXEtk70T4te4qtPe0aabo/edit#gid=0)
+
+---
 
 # FAC-TRACK
 Application that allows FAC students past and present to track their learning.
@@ -32,54 +35,6 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 ![screen shot 2019-01-15 at 18 39 28](https://user-images.githubusercontent.com/25176118/51201793-f26fa280-18f4-11e9-95dd-93ac5e8885c5.png)
 
-
-## Setup
-
-### JSON
-```
-{
-  "name": "fac-track",
-  "version": "1.0.0",
-  "description": "Application to allow for FAC students to track their progress throught the learning weeks",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest --coverage",
-    "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fac-15/FAC-TRACK.git"
-  },
-  "author": "Jason, Hannah, Charmaine, Martin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fac-15/FAC-TRACK/issues"
-  },
-  "homepage": "https://github.com/fac-15/FAC-TRACK#readme",
-  "dependencies": {
-    "env2": "^2.2.2",
-    "bcryptjs": "^2.4.3",
-    "cookie": "^0.3.1",
-    "jsonwebtoken": "^8.4.0",
-    "body-parser": "^1.18.3",
-    "serve-favicon": "^2.5.0",
-    "express": "^4.15.3",
-    "express-handlebars": "^3.0.0",
-    "pg": "^7.7.1"
-  },
-  "devDependencies": {
-    "codecov": "^3.1.0",
-    "nodemon": "^1.18.8",
-    "supertest": "^3.3.0",
-    "eslint": "^5.12.0",
-    "eslint-config-node": "^4.0.0",
-    "eslint-config-prettier": "^3.4.0",
-    "jest": "^23.6.0"
-  }
-}
-```
-### Databases
 
 #### Creating a local database for LOCAL_URL (factrack) And TEST_DB_URL (factracktest )
 - Connect to postgres, by typing `psql` or `pgcli` in the terminal.

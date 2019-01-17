@@ -3,6 +3,9 @@ const request = require("supertest");
 const app = require("../src/app");
 
 
+// may want to modify how we are doing this, but it seems to work:
+// http://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/#7-About-the-Database-connection
+
 describe('Test the home route', () => {
     test('home should return 200 status code',  (done) => {
         request(app).get('/').then((response) => {
