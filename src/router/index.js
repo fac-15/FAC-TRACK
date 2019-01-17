@@ -1,6 +1,6 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
-const hbhelpers = require("../views/helpers/index.js");
+// const hbhelpers = require("../views/helpers/index.js");
 
 // create a new router
 const router = express.Router();
@@ -13,6 +13,9 @@ router.get("/", (req, res) => {
 
 // dashboard
 router.get("/dashboard", (req, res) => {
+  // enter user id to get:
+  // - average confidence
+  // - tasks completed
   dbhelpers
     .getAllWeeks()
     .then(data => {
@@ -50,6 +53,8 @@ router.get(
 
 
 // task routes
+// NOTE: this can be:  http://localhost:5002/dashbsxoard/sd   and still be a valid url
+// - in the console, this is a 404 page not found 
 router.get("/:week/:tasks/", (req, res) => {
 
     const weekName = req.params.week;

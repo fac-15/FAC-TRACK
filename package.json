@@ -4,7 +4,7 @@
   "description": "Application to allow for FAC students to track their progress throught the learning weeks",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --forceExit --coverage && NODE_ENV='test'",
     "dev": "nodemon ./src/server.js",
     "start": "node ./src/server.js"
   },
