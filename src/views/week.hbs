@@ -1,11 +1,13 @@
 <main class="page-content">
     <section class="main-section header">
-        <h1>This is the {{name}} week view</h1>
+        <h1>Week {{number}} : {{name}}</h1>
         <ul>
         {{#each tasks}}
 
-        <li> <h3> Workshop Name : {{name}} </h3>
-            <a href = "{{repo_link}}"> Repo Link </a>
+        <li class="{{trafficLight confidence}} {{taskComplete completion}}">
+          <h3> Workshop Name : {{name}} </h3>
+            <p>confidence: {{confidence}}</p>
+            <p>completion: {{completion}}</p>
           </li>
         {{/each}}
       </ul>

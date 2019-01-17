@@ -1,5 +1,6 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
+const hbhelpers = require("../views/helpers/index.js");
 
 // create a new router
 const router = express.Router();
@@ -45,12 +46,13 @@ router.get(
     // use the weekNumber to access the database list for that weeks task
 
     const weekNum = req.params.name.split("_")[0];
-
+    // const trafficLight = hbhelpers.confidence;
+    // get data for dave
     dbhelpers
-      .getTasksByWeek(weekNum)
+      .getTaskForUser("dave", weekNum)
       .then(data => {
-        console.log("response from getTasksByWeek/router index: ", data);
-        res.render("week", { name: weekName, tasks: data });
+        // console.log("response from getTasksByWeek/router index: ", data);
+        res.render("week", { name: weekName, tasks: data, number: weekNum });
       })
       .catch(err => {
         console.log("/weeks error: ", err);
@@ -82,11 +84,6 @@ console.log(weekName, taskName);
 
     // res.render("log");
 });
-
-
-
-
-
 
 // task routes
 // 1 - 8
