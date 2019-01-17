@@ -24,7 +24,7 @@ router.get("/dashboard", (req, res) => {
     })
     .catch(err => {
       // console.log("/dashboard error: ", err);
-      reject(err);
+      res.status(err, 500);
     });
 });
 
