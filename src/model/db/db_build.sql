@@ -20,7 +20,7 @@ CREATE TABLE users (
   username VARCHAR(100) NOT NULL UNIQUE,
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(100) NOT NULL,
-  logged_in BOOLEAN NOT NULL
+  logged_in BOOLEAN DEFAULT false
 );
 
 CREATE TABLE logs (
@@ -62,14 +62,14 @@ insert into tasks (name, week_id, repo_link) values ('Node Intro Workshop', 3, '
 
 
 -- Users table
-insert into users (username, email, password, logged_in) values ('sheila', 'bgeri0@illinois.edu', '2kb3PLnlE3', true);
-insert into users (username, email, password, logged_in) values ('dave', 'kgeddes1@mysql.com', 'C7Zbx09', false);
-insert into users (username, email, password, logged_in) values ('francis', 'drickeard2@issuu.com', 'NlOb9zFWz', false);
-insert into users (username, email, password, logged_in) values ('charlotte', 'kpoundesford3@i2i.jp', '2EXhiV', true);
-insert into users (username, email, password, logged_in) values ('audrey', 'tsebborn4@mapquest.com', 'm4amCd3zewy4', false);
-insert into users (username, email, password, logged_in) values ('craig', 'bsehorsch5@woothemes.com', 'qPstcGmT', false);
-insert into users (username, email, password, logged_in) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T', false);
-insert into users (username, email, password, logged_in) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p', false);
+insert into users (username, email, password, logged_in) values ('sheila', 'bgeri0@illinois.edu', '2kb3PLnlE3');
+insert into users (username, email, password, logged_in) values ('dave', 'kgeddes1@mysql.com', 'C7Zbx09');
+insert into users (username, email, password, logged_in) values ('francis', 'drickeard2@issuu.com', 'NlOb9zFWz');
+insert into users (username, email, password, logged_in) values ('charlotte', 'kpoundesford3@i2i.jp', '2EXhiV');
+insert into users (username, email, password, logged_in) values ('audrey', 'tsebborn4@mapquest.com', 'm4amCd3zewy4');
+insert into users (username, email, password, logged_in) values ('craig', 'bsehorsch5@woothemes.com', 'qPstcGmT');
+insert into users (username, email, password, logged_in) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
+insert into users (username, email, password, logged_in) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
 
 
 
