@@ -4,12 +4,20 @@
     </section>
     <section class="main-section">
         <p>get all weeks, loop through and output here</p>
-          {{#each weeks}}
-          <p> {{week_name}} <p>
+    </section>
 
-          {{/each}}
+    <section class="main-section">
+        {{#each weeks}}
+            <article class="week">
+                {{week_name}}
 
-        <ul>
+            </article>
+        {{/each}}
+
+
+            <h3>Static Week outputs</h3>
+
+            <ul>
             <li><a href="/week-1_toolkit">Toolkit</a></li>
             <li><a href="/week-2_testing">Testing</a></li>
             <li><a href="/week-3_api">Api</a></li>
@@ -19,7 +27,10 @@
             <li><a href="/week-7_authentication">Authentication</a></li>
             <li><a href="/week-8_express-handlebars">Express</a></li>
             
-        </ul>
+            </ul>
+
+
+        
     </section>
 
 </main>

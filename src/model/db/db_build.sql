@@ -74,6 +74,7 @@ insert into users (username, email, password) values ('bill', 'vbruckman7@dyndns
 
 
 -- Logs table
+-- task_id, user_id
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 1);

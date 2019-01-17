@@ -10,23 +10,13 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
-// dashboard route
-// router.get("/dashboard", (req, res) => {
-//   dbhelpers.getAllWeeks((error, result) => {
-//     console.log("in getAllWeeks/dashboard route");
-//     if (error) {
-//       console.log("error in dbhelpers, router:", error);
-//     }
-//     console.log(result);
-//     res.render("dashboard", { weeks: result });
-//   });
-// });
 
+// dashboard
 router.get("/dashboard", (req, res) => {
   dbhelpers
     .getAllWeeks()
     .then(data => {
-      console.log("response from database", data);
+      // console.log("response from database", data);
       res.render("dashboard", { weeks: data });
     })
     .catch(err => {
@@ -34,9 +24,6 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
-//   console.log(result);
-//   res.render("dashboard", { weeks: result });
-// });
 
 // week route(s)
 router.get(
@@ -60,11 +47,29 @@ router.get(
   }
 );
 
-router.get("/week-1_toolkit/workshop_1", (req, res) => {
-  res.render("log");
 
-  //get repo link
+
+// task routes
+router.get("/:week/:tasks/", (req, res) => {
+
+    const weekName = req.params.week;
+    const taskName = req.params.tasks;
+    // console.log(weekName, taskName);
+
+     dbhelpers
+       .getRepoLink(taskName)
+       .then(data => {
+         console.log("get repo link where taskName equals dataname: ", data);
+         res.render("log", { name: weekName, tasks: taskName, repo_link: data });
+       })
+       .catch(err => {
+         console.log("/weeks error: ", err);
+       });
+
 });
+
+
+
 
 // task routes
 // 1 - 8
