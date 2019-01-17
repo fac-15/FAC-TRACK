@@ -71,7 +71,6 @@ insert into users (username, email, password) values ('craig', 'bsehorsch5@wooth
 insert into users (username, email, password) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
 insert into users (username, email, password) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
 
-
 -- Logs table
 INSERT INTO logs (completion, confidence, notes) values ('TRUE', '1', 'test database notes');
 
