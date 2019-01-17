@@ -1,9 +1,14 @@
 <main class="page-content">
     <section class="main-section header">
       {{name}}
-      {{repo_link}}
+      <br>
+      {{tasks}}
 
-      <h1>Complete</h1>
+
+      {{#each repo_link}}
+      <p> {{repo_link}} <p>
+
+      {{/each}}
 
  <form action=""  method="POST">
 

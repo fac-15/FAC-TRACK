@@ -1,8 +1,8 @@
 // get tasks by week
 // argument = week number
-// SELECT * from tasks INNER JOIN weeks ON tasks.week_id = '2' 
+// SELECT * from tasks INNER JOIN weeks ON tasks.week_id = '2'
 // `SELECT name, repo_link from tasks INNER JOIN weeks ON tasks.week_id = '${week_id}' `
-// SELECT * from tasks WHERE week_id = '2' 
+// SELECT * from tasks WHERE week_id = '2'
 
 const db = require('../db/db_connection');
 
@@ -14,6 +14,7 @@ const getTasksByWeek = week_id => {
                 reject('week id not found in database ', err);
             }
             else {
+
                 resolve(res.rows);
             }
         })
