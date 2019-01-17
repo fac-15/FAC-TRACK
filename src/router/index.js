@@ -44,9 +44,25 @@ router.get(
     const weekName = req.params.name.split("_")[1];
     // use the weekNumber to access the database list for that weeks task
 
-    res.render("week", { name: weekName });
+    const weekNum = req.params.name.split("_")[0];
+
+    dbhelpers
+      .getTasksByWeek(weekNum)
+      .then(data => {
+        console.log("response from getTasksByWeek/router index: ", data);
+        res.render("week", { name: weekName, tasks: data });
+      })
+      .catch(err => {
+        console.log("/weeks error: ", err);
+      });
   }
 );
+
+router.get("/week-1_toolkit/workshop_1", (req, res) => {
+  res.render("log");
+
+  //get repo link
+});
 
 // task routes
 // 1 - 8
