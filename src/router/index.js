@@ -60,29 +60,10 @@ router.get(
   }
 );
 
+router.get("/week-1_toolkit/workshop_1", (req, res) => {
+  res.render("log");
 
-
-// routering the log page for each task. to bring in the name of the workshop/challange and diplay a repo_link
-router.get('/:week/:tasks/', (req, res) => {
-
-
-    const weekName = req.params.week;
-       const taskName = req.params.tasks;
-
-console.log(weekName, taskName);
-
-
-       dbhelpers
-         .getRepoLink(taskName)
-         .then(data => {
-           console.log("get repo link where taskName equals dataname: ", data);
-           res.render("log", { name: weekName, tasks: taskName, repo_link: data });
-         })
-         .catch(err => {
-           console.log("/weeks error: ", err);
-         });
-
-    // res.render("log");
+  //get repo link
 });
 
 // task routes
