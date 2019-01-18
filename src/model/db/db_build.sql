@@ -56,7 +56,7 @@ insert into tasks (name, week_id, repo_link) values ('Pure functions workshop', 
 insert into tasks (name, week_id, repo_link) values ('Introducing APIs', 3, 'https://github.com/foundersandcoders/api-workshop');
 insert into tasks (name, week_id, repo_link) values ('XHR workshop', 3, 'https://github.com/foundersandcoders/xhr-workshop');
 -- week 4
-insert into tasks (name, week_id, repo_link) values ('Node Intro Workshop', 3, 'https://github.com/foundersandcoders/Node-Intro-Workshop');
+insert into tasks (name, week_id, repo_link) values ('Node Intro Workshop', 4, 'https://github.com/foundersandcoders/Node-Intro-Workshop');
 
 
 
@@ -75,15 +75,27 @@ insert into users (username, email, password) values ('bill', 'vbruckman7@dyndns
 
 -- Logs table
 -- task_id, user_id
+
+-- sheila id = 1
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 1);
 
+-- dave id = 2
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 5, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 6, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 7, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '3', 'test database notes', 8, 2);
 
+
+-- expecting for dave:
+-- 3 completions in week 1 (tasks 1-3)
+-- 1 completion in week 2 (tasks 4-6)
+-- 0 completions in week 3 (tasks 7-9)
 
 COMMIT;

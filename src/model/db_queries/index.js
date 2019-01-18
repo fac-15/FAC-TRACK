@@ -3,4 +3,6 @@ module.exports = {
     getTasksByWeek: require('./getTasksByWeek'),
     getRepoLink: require('./getRepoLink'),
     getTaskForUser: require('./getTaskForUser'),
+    // dashboard view
+    getAllTasksForUser: require('./getAllTasksForUser'),
 };
