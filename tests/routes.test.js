@@ -1,6 +1,6 @@
 // jest works magically yay
 const request = require("supertest");
-const app = require("../src/app");
+const app = require("../src/app.js");
 
 test("something passes at last", () => {
     expect(1).toBe(1);
