@@ -10,24 +10,37 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
-
 // dashboard
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard/:id", (req, res) => {
   // enter user id to get:
   // - average confidence
   // - tasks completed
+  // dbhelpers
+  //   .getAllWeeks()
+  //   .then(data => {
+  //     // console.log("response from database", data);
+  //     res.render("dashboard", { weeks: data });
+  //   })
+  //   .catch(err => {
+  //     // console.log("/dashboard error: ", err);
+  //     res.status(err, 500);
+  //   });
+
+  const user_id = req.params.id;
   dbhelpers
-    .getAllWeeks()
+    .getConfidenceForUser(user_id, 1)
     .then(data => {
-      // console.log("response from database", data);
-      res.render("dashboard", { weeks: data });
+      // console.log(
+      //   "response from getConfidenceForUserByWeek/router index: ",
+      //   data
+      // );
+      res.render("dashboard", { data });
     })
     .catch(err => {
-      // console.log("/dashboard error: ", err);
+      // console.log("/weeks error: ", err);
       res.status(err, 500);
     });
 });
-
 
 // week route(s)
 router.get(
@@ -52,32 +65,25 @@ router.get(
   }
 );
 
-
-
 // task routes
 // NOTE: this can be:  http://localhost:5002/dashbsxoard/sd   and still be a valid url
-// - in the console, this is a 404 page not found 
+// - in the console, this is a 404 page not found
 router.get("/:week/:tasks/", (req, res) => {
+  const weekName = req.params.week;
+  const taskName = req.params.tasks;
+  // console.log(weekName, taskName);
 
-    const weekName = req.params.week;
-    const taskName = req.params.tasks;
-    // console.log(weekName, taskName);
-
-     dbhelpers
-       .getRepoLink(taskName)
-       .then(data => {
-         console.log("get repo link where taskName equals dataname: ", data);
-         res.render("log", { name: weekName, tasks: taskName, repo_link: data });
-       })
-       .catch(err => {
-        //  console.log("/weeks error: ", err);
-        res.status(err, 500);
-       });
-
+  dbhelpers
+    .getRepoLink(taskName)
+    .then(data => {
+      console.log("get repo link where taskName equals dataname: ", data);
+      res.render("log", { name: weekName, tasks: taskName, repo_link: data });
+    })
+    .catch(err => {
+      //  console.log("/weeks error: ", err);
+      res.status(err, 500);
+    });
 });
-
-
-
 
 // task routes
 // 1 - 8
