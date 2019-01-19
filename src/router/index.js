@@ -1,6 +1,7 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
-// const hbhelpers = require("../views/helpers/index.js");
+// data processing functions
+const userDash = require("./userDash.js");
 
 // create a new router
 const router = express.Router();
@@ -11,117 +12,35 @@ router.get("/", (req, res) => {
 });
 
 
+
 // dashboard
 router.get("/dashboard", (req, res) => {
-  // enter user id to get:
-  // - average confidence
-  // - tasks completed
 
-  const returnArr = item => {
-    return item+=item;
-  }
+  // 1. set the username to get the correct logs
+  const userName = 'dave';
 
-
-  // probably an issue with promises
-  // - stuff made in 2nd promise want to be returned in first one
+  // 2. get all weeks
   dbhelpers.getAllWeeks()
-    .then(data => {
-      // console.log("response from database", data);
-
-      // loop through all (8) weeks
-      data.map(item => {
-
-        // set empty arrays for confidence and completion
-        // const isComplete = [];
-        // const confLevels = [];
-        // let a;
-        
-
-        // check each user log for the week id
-        dbhelpers.getAllTasksForUser('sheila')
-          .then(userLogs => {
-
-            // attach any logs that exist for the week to week data:
-            // - compare ids to do this
-
-            userLogs.map(log => {
-              if (log.week_id === item.id) {
-
-                // a = log.completion+=log.completion;
-                // const a = log.completion;
-
-                // const b = log.confidence;
-                // isComplete.push(a);
-                // confLevels.push(b);
-                // console.log(log);
-
-              }
-
-                // log weeks without logs as well
-                // console.log(log.completion);
-                // console.log(log.confidence);
-
-              // return isComplete;
-
-            })
-
-
-          })
-          .catch(logsErr => {
-            console.log("error getting user logs ", logsErr);
-            // res.status('error getting user logs ', logsErr, 500);
-          });
-
-
-
-          // if there are logs for the week, add them to the week object
-          // console.log(isComplete)
-          // console.log(a);
-          // if (a!==undefined){
-          //   item.user_details = a;
-          // }
-
-
-          // item.user_details = {
-          //   completion: isComplete,
-          //   confidence: confLevels
-          // }
-
-
-      }); // end weeks loop
-
-      console.log(data);
+    .then(allWeeks => {
       
-      
-      
-      
-      
+    
+      // 3. userDash function matches logs to weeks (by id)
+      userDash(allWeeks, userName)
+        .then(result => {
+          // console.log(result, ' in router.js');
+          res.render("dashboard", { weeks: result });
+        })
+        .catch(error => {
+          console.log("userDash function error: ", error);
+        });
 
-
-      
-      
-      // add user details to each week
-      // - this works, FYI
-      // data.map(item => {
-      //   if (item.id === 1) {
-      //     // console.log(item);
-      //     const user_details = {
-      //       name : 'sheila',
-      //       week_confidence : '2',
-      //       week_complete : '2',
-      //     }
-      //     item.details = user_details;
-      //   } 
-      // });
-      // console.log(data);
-
-
-      res.render("dashboard", { weeks: data });
+      // res.render("dashboard", { weeks: allWeeks });
     })
     .catch(err => {
-      // console.log("/dashboard error: ", err);
+      console.log("getAllWeeks error: ", err);
       res.status(err, 500);
-    });
+    })
+
 });
 
 

@@ -6,11 +6,11 @@
         <p>get all weeks, loop through and output here</p>
     </section>
 
-    <section class="main-section">
+    <section class="main-section dashboard-section">
         {{#each weeks}}
             <article class="dashboard-item">
-                <div class="dashboard-progress"></div>
-                <div class="dashboard-confidence"></div>
+                <div class="dashboard-progress">Tasks Completed: {{completed_tasks}}</div>
+                <div class="dashboard-confidence">Confidence: {{confidence_levels}}</div>
                 <h3>{{id}} - {{week_name}}</h3>
                 <!-- week-${id}_${lowercaseHyphen week_name} -->
 
