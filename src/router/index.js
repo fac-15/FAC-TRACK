@@ -22,8 +22,8 @@ router.get("/dashboard", (req, res) => {
   // 2. get all weeks
   dbhelpers.getAllWeeks()
     .then(allWeeks => {
-      
-    
+
+
       // 3. userDash function matches logs to weeks (by id)
       userDash(allWeeks, userName)
         .then(result => {

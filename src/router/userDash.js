@@ -1,6 +1,7 @@
 const dbhelpers = require("../model/db_queries/index.js");
 
 // outputs details for a specific user on the dashboard
+// - need to also get week slug/url, in order to link to pages
 const userDash = (weeks, username) => {
 
     return new Promise((resolve, reject) => {
@@ -27,10 +28,10 @@ const userDash = (weeks, username) => {
                         }
                     })
 
-                    // use week.id to get the number of tasks for the week from the database
-                    
-                    // count number of 'true's in isComplete array
-                    // divide total number of tasks for the week by sum of confidence levels
+
+                    // ____________________
+                    // - count number of 'true's in isComplete array
+                    // - divide total number of tasks for the week by sum of confidence levels
 
                     // add completion and confidence to object
                     week.completed_tasks = isComplete.length > 0 ? isComplete : '';
@@ -40,7 +41,18 @@ const userDash = (weeks, username) => {
                     //     week.completed_tasks = isComplete
                     // }
 
-                    console.log(week);
+
+                    // ____________________
+                    // use week.id to get the number of tasks for the week from the database
+                    // - this is required to get completion fraction and (possibly) aggregate confidence
+                    dbhelpers.getTasksByWeek(week.id)
+                        .then(result => {
+                            // console.log(result.length, ' userdash ', week.id);
+                            week.task_count = result.length;
+                        })
+                        .catch(error => {
+                            console.log("getTasksByWeek error: ", error);
+                        });
 
                 })
                 resolve(weeks);
