@@ -5,4 +5,5 @@ module.exports = {
     getTaskForUser: require('./getTaskForUser'),
     // dashboard view
     getAllTasksForUser: require('./getAllTasksForUser'),
+    getAllTasks: require('./getAllTasks')
 };

@@ -1,7 +1,8 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
 // data processing functions
-const userDash = require("./userDash.js");
+const userLogs = require("./userLogs.js");
+const taskCount = require("./taskCount.js");
 
 // create a new router
 const router = express.Router();
@@ -10,6 +11,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.render("home");
 });
+
 
 
 
@@ -23,18 +25,25 @@ router.get("/dashboard", (req, res) => {
   dbhelpers.getAllWeeks()
     .then(allWeeks => {
 
+      // 3. userLogs function matches logs to weeks (by id)
+      userLogs(allWeeks, userName)
+        .then(logsRes => {
+          
+          // 4. taskCount adds number of tasks for each week
+          taskCount(logsRes)
+            .then(taskRes => {
+              // console.log(taskRes);
+              res.render("dashboard", { weeks: taskRes });
+            })
+            .catch(taskErr => {
+              console.log("taskCount function error: ", taskErr);
+            })
 
-      // 3. userDash function matches logs to weeks (by id)
-      userDash(allWeeks, userName)
-        .then(result => {
-          // console.log(result, ' in router.js');
-          res.render("dashboard", { weeks: result });
         })
-        .catch(error => {
-          console.log("userDash function error: ", error);
+        .catch(logsErr => {
+          console.log("userLogs function error: ", logsErr);
         });
 
-      // res.render("dashboard", { weeks: allWeeks });
     })
     .catch(err => {
       console.log("getAllWeeks error: ", err);
