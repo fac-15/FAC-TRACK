@@ -5,5 +5,7 @@ module.exports = {
   getTaskForUser: require("./getTaskForUser"),
   getConfidenceForUser: require("./getConfidenceForUser"),
   logData: require("./logData"),
-  checkTasksList: require('./checkTasksList')
+  getSingleTaskForUser: require("./getSingleTaskForUser"),
+  weekExist: require("./weekExist"),
+  taskExist: require("./taskExist")
 };
