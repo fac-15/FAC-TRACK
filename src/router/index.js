@@ -147,20 +147,27 @@ router.get(
                 .getSingleTaskForUser(task_id, "dave")
                 .then(singleTask => {
                   console.log("user singleTask", singleTask);
+                  const name = singleTask[0].name;
+                  const repoLink = singleTask[0].repo_link;
+                  const completion = singleTask[0].completion;
+                  const confidence = singleTask[0].confidence;
+                  const notes = singleTask[0];
 
                   // 7. i) render log WITH user details
-                  res.render("log", { singleTask });
+                  res.render("log", { name, repoLink, completion, confidence });
                 })
                 .catch(taskErr => {
                   console.log(taskErr);
                   // 7. ii) render log WITHOUT user details - none entered for this task
-                  res.render("log", { taskData[0] });
+                  res.render("log", { taskData });
                 });
 
               // 7. render task / log view for a specific user
             })
             .catch(taskErr => {
-              console.log(taskErr);
+              console.log("Error loading the error plage");
+              res.render("404");
+              return;
             });
         } else {
           console.log("week not found");

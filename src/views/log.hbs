@@ -2,14 +2,18 @@
     <section class="main-section header">
 
       {{name}}
-      {{tasks}}
+      {{repoLink}}
 
-{{#each data}}
-
-{{repo_link}}
-
-{{data}}
+{{#each taskDataComplete}}
 {{/each}}
+{{repo}}
+
+{{taskDataComplete}}
+
+
+<!-- {{#each repoLink}}
+<p> {{repoLink}} <p>
+{{/each}} -->
       <h1>Complete</h1>
 
  <form action="/logData"  method="post">
