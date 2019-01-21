@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 // yet to write files
 const routes = require("./router/index");
 const helpers = require("./views/helpers/index");
+
+const dbhelpers = require("./model/db_queries/index.js");
 // const postData = require("./model/postData.js");
 
 const app = express();
@@ -35,6 +37,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "public")));
+
+
+// post data request from logs, takes the req.body and sends it throught the database query
+// page refreshes
+app.post('/logData', (req, res) => {
+  const user = req.body;
+  console.log("in the app", user);
+  dbhelpers.logData(user)
+res.redirect('back');
+  // user.save()
+  //   .then(user => {
+  //     res.json('User added successfully');
+  //   })
+  //   .catch(err => {
+  //     res.status(400).send("unable to save to database");
+  //   });
+});
 
 app.set("port", process.env.PORT || 5002);
 app.use(routes);
