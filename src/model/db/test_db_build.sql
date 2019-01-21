@@ -71,8 +71,19 @@ insert into users (username, email, password) values ('craig', 'bsehorsch5@wooth
 insert into users (username, email, password) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
 insert into users (username, email, password) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
 
+
+
 -- Logs table
-INSERT INTO logs (completion, confidence, notes) values ('TRUE', '1', 'test database notes');
+-- task_id, user_id
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 1);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 1);
+
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 2);
 
 
 COMMIT;

@@ -253,7 +253,7 @@ html {
 }
 
 body {
-  color: #313131;
+  color: #1c0b19;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -262,40 +262,64 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 500;
   line-height: 1.6;
   margin: 0 0 1rem;
   text-align: center;
+}
+@media only screen and (min-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
 }
 @media only screen and (min-width: 600px) {
   h1 {
     font-size: 3.25rem;
   }
 }
+h1 span {
+  font-weight: 400;
+}
 
 h2 {
-  font-size: 1.7rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 500;
   line-height: 1.5;
   margin: 0 0 1rem;
+}
+@media only screen and (min-width: 480px) {
+  h2 {
+    font-size: 1.7rem;
+  }
 }
 @media only screen and (min-width: 600px) {
   h2 {
     font-size: 2.5rem;
   }
 }
+h2 span {
+  font-weight: 400;
+}
 
 h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 500;
   line-height: 1.6;
   margin: 0 0 1rem;
+}
+@media only screen and (min-width: 480px) {
+  h3 {
+    font-size: 1.4rem;
+  }
 }
 @media only screen and (min-width: 600px) {
   h3 {
     font-size: 2.2rem;
   }
+}
+h3 span {
+  font-weight: 400;
 }
 
 .main-section {
@@ -314,7 +338,65 @@ h3 {
 }
 
 .nav-menu {
-  background-color: #979797;
+  background-color: #474448;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.nav-menu .main-section {
+  display: flex;
+  margin-top: 0;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+.nav-menu .menu_icon {
+  fill: #ffffff;
+}
+
+.week_view {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-left: 0.5rem solid transparent;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: #c9dee8;
+  color: #474448;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.week_view h3 {
+  margin: 0;
+}
+.week_view:nth-child(1) {
+  margin-top: 0;
+}
+.week_view.red {
+  border-left-color: #ea3546;
+}
+.week_view.green {
+  border-left-color: #35ff69;
+}
+.week_view.yellow {
+  border-left-color: #f9c80e;
+}
+.week_view.tick {
+  background-color: #60abf7;
+  color: #0c6cb2;
+}
+
+.chevron_default {
+  fill: #474448;
+}
+
+.tick_complete {
+  fill: #0c6cb2;
 }
 
 /*# sourceMappingURL=style.css.map */
