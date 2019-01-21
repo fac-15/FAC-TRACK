@@ -11,7 +11,8 @@
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    },
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fac-15/FAC-TRACK.git"
