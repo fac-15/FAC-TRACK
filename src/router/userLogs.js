@@ -7,7 +7,10 @@ const dbhelpers = require("../model/db_queries/index.js");
 // 2. get all tasks (for a specific user) from database
 // 3. loop through all weeks
 // 4. create 2 arrays of completions and confidence for each week
-// 5. add completed_tasks and confidence_levels as properties on each week object
+// 5. process completion and confidence levels
+//    a) count number of 'true's in isComplete array
+//    b) get average confidence level (for all tasks logged by user)
+// 6. add completed_tasks and confidence_levels as properties on each week object
 
 // 1.
 const userLogs = (weeks, username) => {
@@ -37,13 +40,25 @@ const userLogs = (weeks, username) => {
                     })
 
                     // ____________________
-                    // bonus bit, could do here rather than in handlebars:
-                    // - count number of 'true's in isComplete array
-                    // - divide total number of tasks for the week by sum of confidence levels
+                    // 5. (and 6.)
+                    // week.<property> adds value to week object
+
+                    // no. of tasks completed
+                    week.completed_tasks = isComplete.length > 0 ? isComplete.length : '';
+
+                    // confidence level
+                    if (confLevels.length > 0){
+                        // a) add levels together
+                        const total = confLevels.reduce((previous, current) => current += previous);
+                        // b) get average
+                        const avg = total / confLevels.length;
+                        week.confidence_levels = avg;
+                    }
 
                     // 5. add completion and confidence to object
-                    week.completed_tasks = isComplete.length > 0 ? isComplete : '';
-                    week.confidence_levels = confLevels.length > 0 ? confLevels : '';
+                    // week.completed_tasks = isComplete.length > 0 ? isComplete : '';
+                    // week.confidence_levels = confLevels.length > 0 ? confLevels : '';
+                    
                     // the above is the same as:
                     // if (isComplete.length > 0){
                     //     week.completed_tasks = isComplete

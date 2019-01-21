@@ -8,7 +8,7 @@
         {{#each weeks}}
             <article class="dashboard-item">
                 <div class="dashboard-progress">Tasks Completed: {{completed_tasks}} / {{task_count}}</div>
-                <div class="dashboard-confidence">Confidence: {{confidence_levels}}</div>
+                <div class="dashboard-confidence">Average Confidence: {{confidence_levels}}</div>
                 <h3><a href="/{{url_slug}}">{{id}} - {{week_name}}</a></h3>
                 <!-- week-${id}_${lowercaseHyphen week_name} -->
             </article>
