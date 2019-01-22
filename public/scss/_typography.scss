@@ -1,45 +1,50 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-// ––––––––––––––––––––––––––––––––––––––––––––––––––
+–
 // typography
 body {
-    color: $black;
-    font-size: 16px;
-    font-family : $font-main;
-    font-weight : $normal;
-    line-height : 1.4;
-    background: $white;
+
+  color: $black;
+  font-size: 16px;
+  font-family: $font-main;
+  font-weight: $regular;
+  line-height: 1.4;
+  background: $white;
 }
 
-strong {
-    font-weight: $bold;
-}
+@mixin header($sm-size, $md-size, $lg-size, $line) {
+  font-size: $sm-size;
 
-@mixin header($sm-size, $lg-size, $line){
-    font-size: $sm-size;
-    @media only screen and (min-width: 600px) {
-        font-size: $lg-size;
-    }
-    font-weight: $med;
-    line-height: $line;
-    margin: 0 0 1rem;
-    @content;
+  @media only screen and (min-width: 480px) {
+    font-size: $md-size;
+  }
+
+  @media only screen and (min-width: 600px) {
+    font-size: $lg-size;
+  }
+  font-weight: $medium;
+  span {
+    font-weight: $regular;
+  }
+  line-height: $line;
+  margin: 0 0 1rem;
+  @content;
 }
 
 h1 {
-    @include header(2rem, 3.25rem, 1.6);
-    text-align: center;
+  @include header(1.6rem, 2rem, 3.25rem, 1.6);
+  text-align: center;
 }
 
 h2 {
-    @include header(1.7rem, 2.5rem, 1.5);
+  @include header(1.4rem, 1.7rem, 2.5rem, 1.5);
 }
 
 h3 {
-    @include header(1.4rem, 2.2rem, 1.6);
+  @include header(1.1rem, 1.4rem, 2.2rem, 1.6);
 }

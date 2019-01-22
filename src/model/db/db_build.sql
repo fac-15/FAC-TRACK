@@ -36,8 +36,7 @@ CREATE TABLE logs (
 
 
 -- Weeks table
--- error: insert or update on table "tasks" violates foreign key constraint "tasks_week_id_fkey"
-INSERT INTO weeks (week_name, url_slug) values ('Toolkit', 'tooklit');
+INSERT INTO weeks (week_name, url_slug) values ('Toolkit', 'toolkit');
 INSERT INTO weeks (week_name, url_slug) values ('Testing', 'testing');
 INSERT INTO weeks (week_name, url_slug) values ('API', 'api');
 INSERT INTO weeks (week_name, url_slug) values ('Node Core', 'node-core');
@@ -115,12 +114,12 @@ INSERT INTO users (username, email, password) values ('bill', 'vbruckman7@dyndns
 -- sheila id = 1
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 1);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 3, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 1);
 
 -- dave id = 2
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 2);
+INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 2, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 2);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 5, 2);

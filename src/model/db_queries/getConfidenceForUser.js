@@ -8,7 +8,26 @@ const getConfidenceForUser = (user_id, weekId) =>
         if (err) {
           reject("no confidence found in database ", err);
         } else {
-          resolve(res.rows);
+          const result = res.rows.filter(filter => filter.week_id === weekId, {
+
+          });
+          console.log("this is the result",result);
+          let cul = 0;
+          let count = 0;
+
+          for(const key in result) {
+            console.log(result[key].week_id);
+            console.log(result[key].confidence);
+              cul += result[key].confidence;
+
+              count++;
+          }
+    
+
+          const total = cul / count;
+          console.log("cul",cul, "count",count, "totalAgr", total);
+
+          resolve(total);
         }
       }
     );

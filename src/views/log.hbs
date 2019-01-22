@@ -1,13 +1,26 @@
 <main class="page-content">
     <section class="main-section header">
-      {{name}}
-      {{repo_link}}
 
+      {{name}}
+      {{repoLink}}
+
+{{#each taskDataComplete}}
+{{/each}}
+{{repo}}
+
+{{taskDataComplete}}
+
+
+<!-- {{#each repoLink}}
+<p> {{repoLink}} <p>
+{{/each}} -->
       <h1>Complete</h1>
 
- <form action=""  method="POST">
+ <form action="/logData"  method="post">
 
-  <h1>Complete:</h1><input type="checkbox">Tick if complete<br>
+  <h1>Complete:</h1>
+<input type="checkbox" value="false" name="completion" />Not complete<br>
+<input type="checkbox" value="true" name="completion" />Complete<br>
   <h1>Confidence Level:</h1>
   <input type="radio" name="confidence" value="3"> low<br>
   <input type="radio" name="confidence" value="2"> Medium<br>
