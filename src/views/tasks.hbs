@@ -1,37 +1,54 @@
 <main class="page-content">
-    <section class="main-section header">
-
-<section class="logpage">
-
-{{name}}
-{{repoLink}}
-
-{{#each taskDataComplete}}
-{{/each}}
-{{repo}}
-
-{{taskDataComplete}}
+  <section class="main-section header">
+    <h1>{{name}}</h1>
+    <a href="{{repoLink}}" type="button">Repo Link</a>
 
 
- <form action="/logData"  method="post">
+     <form action="/logData"  method="post">
 
-  <h1>Complete:</h1>
-  <input type="checkbox" value="false" name="completion" />Not complete<br>
-  <input type="checkbox" value="true" name="completion" />Complete<br>
+        <section class="form-section">
+          <h2>Complete:</h2>
+          <section class="completed">
+            <label class="checkbox-label">Completed
+              <input class="checkbox-input" type="checkbox" value="true" name="completion"/>
+              <span class="checkmark"></span>
+            </label>
+          </section>
+        </section>
 
-  <h1>Confidence Level:</h1>
-  <input type="radio" name="confidence" value="3"> low<br>
-  <input type="radio" name="confidence" value="2"> Medium<br>
-  <input type="radio" name="confidence" value="1"> High<br>
+      <section class="form-section">
+        <h2>Confidence Level:</h2>
+        <section class="completed radio-group">
 
-  <h1>Notes:</h1><br>
-  <textarea name="notes" rows="10" cols="14">
-  </textarea>
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="3">
+            <h5>Low</h5>
+          </section>
 
-  <button type="submit">Save</button>
-</form>
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="2">
+            <h5>Medium</h5>
+          </section>
 
-</section>
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="1">
+            <h5>High</h5>
+          </section>
 
-    </section>
+        </section>
+      </section>
+
+      <section class="textarea">
+        <h2 class="notes">Notes:</h2>
+        <textarea name="notes" rows="10" cols="40">
+        </textarea>
+      </section>
+
+
+      <section class="logButton">
+        <button type="submit" class="save">Save</button>
+      </section>
+
+    </form>
+  </section>
 </main>
