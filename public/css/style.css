@@ -206,7 +206,7 @@ html {
 
 body {
   color: #1c0b19;
-  font-size: 16px;
+  font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.4;
@@ -268,7 +268,7 @@ h3 {
 
 .nav-menu {
   background-color: #474448;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
@@ -323,7 +323,51 @@ h3 {
   align-items: baseline;
   text-align: center; }
 .dashboard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 45%;
   padding: 1rem; }
+  .dashboard-item:nth-child(odd) {
+    padding-left: 0; }
+  .dashboard-item:nth-child(even) {
+    padding-right: 0; }
+.dashboard-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 8rem;
+  height: 8rem; }
+.dashboard-fraction {
+  position: absolute;
+  font-weight: 500; }
+.dashboard-confidence {
+  width: 6rem;
+  height: 0.25rem;
+  background-color: #c9dee8; }
+  .dashboard-confidence.red {
+    background-color: #ea3546; }
+  .dashboard-confidence.yellow {
+    background-color: #f9c80e; }
+  .dashboard-confidence.green {
+    background-color: #35ff69; }
+.dashboard-header {
+  margin: 0; }
+  .dashboard-header a {
+    text-decoration: none;
+    color: #1c0b19;
+    transition: color ease-in-out 0.3s; }
+    .dashboard-header a:hover {
+      color: #474448; }
+
+.circle {
+  stroke: #c9dee8; }
+
+.progress-circle {
+  stroke: #60abf7;
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%; }
 
 /*# sourceMappingURL=style.css.map */
