@@ -26,9 +26,7 @@ app.engine(
 );
 
 // load public folder
-app.use(
-  express.static(path.join(__dirname, "..", "/public"), { maxAge: "30d" })
-);
+app.use(express.static(path.join(__dirname, "/..public"), { maxAge: "30d" }));
 
 app.use(bodyParser.json());
 
@@ -39,26 +37,6 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 // post data request from logs, takes the req.body and sends it throught the database query
 // page refreshes
-app.post("/logData", (req, res) => {
-  //1. get user id from the url
-  const userName = "dave";
-  //2. get task id from the url
-  const taskSlug = req.params;
-  console.log("taskSLug url", taskSlug);
-  //3. get the form input request
-  const formEntry = req.body;
-  console.log("in the app", formEntry);
-  //4. add the data to the logs database table
-  dbhelpers
-    .logData(formEntry)
-    .then(userInput => {
-      res.redirect("back");
-    })
-    .catch(err => {
-      res.status(400);
-      res.redirect("back");
-    });
-});
 
 app.set("port", process.env.PORT || 5002);
 app.use(routes);
