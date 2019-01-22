@@ -11,9 +11,13 @@ body {
     color: $black;
     font-size: 16px;
     font-family : $font-main;
-    font-weight : 400;
+    font-weight : $normal;
     line-height : 1.4;
     background: $white;
+}
+
+strong {
+    font-weight: $bold;
 }
 
 @mixin header($sm-size, $lg-size, $line){
@@ -21,7 +25,7 @@ body {
     @media only screen and (min-width: 600px) {
         font-size: $lg-size;
     }
-    font-weight: 700;
+    font-weight: $med;
     line-height: $line;
     margin: 0 0 1rem;
     @content;

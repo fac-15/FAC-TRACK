@@ -1,6 +1,8 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
-// const hbhelpers = require("../views/helpers/index.js");
+// data processing functions
+const userLogs = require("./userLogs.js");
+const taskCount = require("./taskCount.js");
 
 // create a new router
 const router = express.Router();
@@ -10,36 +12,42 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
-// dashboard
-router.get("/dashboard/:id", (req, res) => {
-  // enter user id to get:
-  // - average confidence
-  // - tasks completed
-  // dbhelpers
-  //   .getAllWeeks()
-  //   .then(data => {
-  //     // console.log("response from database", data);
-  //     res.render("dashboard", { weeks: data });
-  //   })
-  //   .catch(err => {
-  //     // console.log("/dashboard error: ", err);
-  //     res.status(err, 500);
-  //   });
 
-  const user_id = req.params.id;
-  dbhelpers
-    .getConfidenceForUser(user_id, 1)
-    .then(data => {
-      // console.log(
-      //   "response from getConfidenceForUserByWeek/router index: ",
-      //   data
-      // );
-      res.render("dashboard", { data });
+// dashboard
+router.get("/dashboard", (req, res) => {
+
+  // 1. set the username to get the correct logs
+  const userName = 'dave';
+
+  // 2. get all weeks
+  dbhelpers.getAllWeeks()
+    .then(allWeeks => {
+
+      // 3. userLogs function matches logs to weeks (by id)
+      userLogs(allWeeks, userName)
+        .then(logsRes => {
+          
+          // 4. taskCount adds number of tasks for each week
+          taskCount(logsRes)
+            .then(taskRes => {
+              // console.log(taskRes);
+              res.render("dashboard", { weeks: taskRes });
+            })
+            .catch(taskErr => {
+              console.log("taskCount function error: ", taskErr);
+            })
+
+        })
+        .catch(logsErr => {
+          console.log("userLogs function error: ", logsErr);
+        });
+
     })
     .catch(err => {
-      // console.log("/weeks error: ", err);
+      console.log("getAllWeeks error: ", err);
       res.status(err, 500);
-    });
+    })
+
 });
 
 // week route(s)
