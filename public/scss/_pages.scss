@@ -1,4 +1,55 @@
-// custom page styles
+
+.week_view {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-left: 0.5rem solid transparent;
+  // height: 54px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: $grey-light;
+  color: $grey-dark;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+  }
+
+  // padding for first element
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+
+  // different states (classes changed by handlers)
+  &.red {
+    border-left-color: $red;
+  }
+
+  &.green {
+    border-left-color: $green;
+  }
+
+  &.yellow {
+    border-left-color: $yellow;
+  }
+
+  &.tick {
+    background-color: $blue;
+    color: $blue-dark;
+  }
+}
+
+.chevron_default {
+  fill: $grey-dark;
+}
+
+.tick_complete {
+  fill: $blue-dark;
+}
+
 
 // dashboard
 .dashboard {
@@ -17,3 +68,4 @@
         // }
     }
 }
+

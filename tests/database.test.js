@@ -71,3 +71,35 @@ test("getTasksByWeek for week 0", () => {
     expect(queryIndex.getTasksByWeek(0)).resolves.toEqual([]);
   });
 });
+
+// getConfidenceForUser Testing
+// const confidence_for_user = [
+//   { confidence: 3, weekId: 1 },
+//   { confidence: 2, weekId: 1 },
+//   { confidence: 2, weekId: 1 },
+//   { confidence: 3, weekId: 1 }
+// ];
+//
+// test("get Confidence For dave", () => {
+//   testBuild((error, response) => {
+//     if (error) {
+//       return error;
+//     }
+//     expect.assertions(1);
+//     expect(queryIndex.getConfidenceForUser("dave")).resolves.toEqual(
+//       confidence_for_user
+//     );
+//   });
+// });
+// });
+
+test("getTasksByWeek for week 0", () => {
+  testBuild((error, response) => {
+    if (error) {
+      return error;
+    }
+    expect.assertions(1);
+    expect(queryIndex.getTasksByWeek(0)).resolves.toEqual([]);
+  });
+});
+
