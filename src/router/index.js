@@ -12,21 +12,18 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
-
 // dashboard
 router.get("/dashboard", (req, res) => {
-
   // 1. set the username to get the correct logs
-  const userName = 'dave';
+  const userName = "dave";
 
   // 2. get all weeks
-  dbhelpers.getAllWeeks()
+  dbhelpers
+    .getAllWeeks()
     .then(allWeeks => {
-
       // 3. userLogs function matches logs to weeks (by id)
       userLogs(allWeeks, userName)
         .then(logsRes => {
-          
           // 4. taskCount adds number of tasks for each week
           taskCount(logsRes)
             .then(taskRes => {
@@ -35,144 +32,153 @@ router.get("/dashboard", (req, res) => {
             })
             .catch(taskErr => {
               console.log("taskCount function error: ", taskErr);
-            })
-
+            });
         })
         .catch(logsErr => {
           console.log("userLogs function error: ", logsErr);
         });
-
     })
     .catch(err => {
       console.log("getAllWeeks error: ", err);
       res.status(err, 500);
-    })
-
+    });
 });
 
 // week route(s)
-router.get(
-  "/:week",
-  (req, res) => {
-    // 1. check url
-    const week = req.params.week;
-    // 2. see if item in url matches a url_slug for week in the database
-    dbhelpers
-      .weekExist(week)
-      .then(data => {
-        // 3. if found, get week details
-        if (data.length > 0) {
-          // console.log("Success", data);
+router.get("/:week", (req, res) => {
+  // 1. check url
+  const week = req.params.week;
+  // 2. see if item in url matches a url_slug for week in the database
+  dbhelpers
+    .weekExist(week)
+    .then(data => {
+      // 3. if found, get week details
+      if (data.length > 0) {
+        // console.log("Success", data);
 
-          // console.log(data[0].week_name);
-          // 4. get week name and id
-          const weekName = data[0].week_name;
-          const weekId = data[0].id;
+        // console.log(data[0].week_name);
+        // 4. get week name and id
+        const weekName = data[0].week_name;
+        const weekId = data[0].id;
 
-          // 5. get tasks for by the user for the week
-          dbhelpers
-            .getTaskForUser("dave", weekId)
-            .then(data => {
-              // console.log("response from getTasksByWeek/router index: ", data);
-              res.render("week", {
-                name: weekName,
-                tasks: data,
-                number: weekId
-              });
-            })
-            .catch(err => {
-              // console.log("/weeks error: ", err);
-              res.status(err, 500);
+        // 5. get tasks for by the user for the week
+        dbhelpers
+          .getTaskForUser("dave", weekId)
+          .then(data => {
+            // console.log("response from getTasksByWeek/router index: ", data);
+            res.render("week", {
+              name: weekName,
+              tasks: data,
+              number: weekId
             });
-        } else {
-          // console.log("week not found");
-          res.render("404");
-          return;
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-);
-
+          })
+          .catch(err => {
+            // console.log("/weeks error: ", err);
+            res.status(err, 500);
+          });
+      } else {
+        // console.log("week not found");
+        res.render("404");
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 // task routes
-router.get(
-  "/:week/:tasks",
-  (req, res) => {
-    // 1. check url
-    const week = req.params.week;
-    // console.log("this is the week name", week);
-    // 2. check task
+router.get("/:week/:tasks", (req, res) => {
+  // 1. check url
+  const week = req.params.week;
+  // console.log("this is the week name", week);
+  // 2. check task
 
-    // 2. see if item in url matches a url_slug for week in the database
-    dbhelpers
-      .weekExist(week)
-      .then(data => {
-        // 3. if found, get week details
-        if (data.length > 0) {
-          // console.log("Success", data);
-          // 4. get week name and id and task from url_slug
-          const weekName = data[0].week_name;
-          const weekId = data[0].id;
-          const task = req.params.tasks;
-          // console.log("this is the task name", task);
-          // 5. get task data
-          dbhelpers
-            .taskExist(task)
-            .then(taskData => {
-              //
-              // console.log("this is task data", taskData);
+  // 2. see if item in url matches a url_slug for week in the database
+  dbhelpers
+    .weekExist(week)
+    .then(data => {
+      // 3. if found, get week details
+      if (data.length > 0) {
+        // console.log("Success", data);
+        // 4. get week name and id and task from url_slug
+        const weekName = data[0].week_name;
+        const weekId = data[0].id;
+        const task = req.params.tasks;
+        // console.log("this is the task name", task);
+        // 5. get task data
+        dbhelpers
+          .taskExist(task)
+          .then(taskData => {
+            //
+            // console.log("this is task data", taskData);
 
-              // 6. get task data for a specific user
-              const task_id = taskData[0].id;
+            // 6. get task data for a specific user
+            const task_id = taskData[0].id;
 
-              dbhelpers
-                .getSingleTaskForUser(task_id, "dave")
-                .then(singleTask => {
-                  // console.log("user singleTask", singleTask);
-                  const name = singleTask[0].name;
-                  const repoLink = singleTask[0].repo_link;
-                  const completion = singleTask[0].completion;
-                  const confidence = singleTask[0].confidence;
-                  const notes = singleTask[0].notes;
+            dbhelpers
+              .getSingleTaskForUser(task_id, "dave")
+              .then(singleTask => {
+                // console.log("user singleTask", singleTask);
+                const name = singleTask[0].name;
+                const repoLink = singleTask[0].repo_link;
+                const completion = singleTask[0].completion;
+                const confidence = singleTask[0].confidence;
+                const notes = singleTask[0].notes;
 
-                  // 7. i) render log WITH user details
-                  res.render("log", {
-                    name,
-                    repoLink,
-                    completion,
-                    confidence,
-                    notes
-                  });
-                })
-                .catch(taskErr => {
-                  console.log(taskErr);
-                  // 7. ii) render log WITHOUT user details - none entered for this task
-                  res.render("log", { taskData });
+                // 7. i) render log WITH user details
+                res.render("tasks", {
+                  name,
+                  repoLink,
+                  completion,
+                  confidence,
+                  notes
                 });
+              })
+              .catch(taskErr => {
+                console.log(taskErr);
+                // 7. ii) render log WITHOUT user details - none entered for this task
+                res.render("tasks", { taskData });
+              });
 
-              // 7. render task / log view for a specific user
-            })
-            .catch(taskErr => {
-              console.log("Error loading the error plage", taskErr);
-              res.render("404");
-              return;
-            });
-        } else {
-          // console.log("week not found");
-          res.render("404");
-          return;
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-);
+            // 7. render task / log view for a specific user
+          })
+          .catch(taskErr => {
+            console.log("Error loading the error plage", taskErr);
+            res.render("404");
+            return;
+          });
+      } else {
+        // console.log("week not found");
+        res.render("404");
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
-
+router.post("/logData", (req, res) => {
+  //1. get user id from the url
+  const userName = "dave";
+  //2. get task id from the url
+  const taskSlug = req.params;
+  console.log("taskSLug url", taskSlug);
+  //3. get the form input request
+  const formEntry = req.body;
+  console.log("in the app", formEntry);
+  //4. add the data to the logs database table
+  dbhelpers
+    .logData(formEntry)
+    .then(userInput => {
+      res.redirect("back");
+    })
+    .catch(err => {
+      res.status(400);
+      res.redirect("back");
+    });
+});
 
 // error pages
 router.use((req, res) => {
