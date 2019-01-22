@@ -50,9 +50,9 @@ const userLogs = (weeks, username) => {
                     if (confLevels.length > 0){
                         // a) add levels together
                         const total = confLevels.reduce((previous, current) => current += previous);
-                        // b) get average
+                        // b) get average and round to the nearest integer
                         const avg = total / confLevels.length;
-                        week.confidence_levels = avg;
+                        week.confidence_levels = Math.round(avg);
                     }
 
                     // 5. add completion and confidence to object

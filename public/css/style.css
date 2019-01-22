@@ -255,73 +255,54 @@ html {
 
 – body {
   color: #1c0b19;
-  font-size: 16px;
+  font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.4;
-  background: #ffffff;
-}
+  background: #ffffff; }
 
 h1 {
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.6;
   margin: 0 0 1rem;
-  text-align: center;
-}
-@media only screen and (min-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-}
-@media only screen and (min-width: 600px) {
-  h1 {
-    font-size: 3.25rem;
-  }
-}
-h1 span {
-  font-weight: 400;
-}
+  text-align: center; }
+  @media only screen and (min-width: 480px) {
+    h1 {
+      font-size: 2rem; } }
+  @media only screen and (min-width: 600px) {
+    h1 {
+      font-size: 3.25rem; } }
+  h1 span {
+    font-weight: 400; }
 
 h2 {
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.5;
-  margin: 0 0 1rem;
-}
-@media only screen and (min-width: 480px) {
-  h2 {
-    font-size: 1.7rem;
-  }
-}
-@media only screen and (min-width: 600px) {
-  h2 {
-    font-size: 2.5rem;
-  }
-}
-h2 span {
-  font-weight: 400;
-}
+  margin: 0 0 1rem; }
+  @media only screen and (min-width: 480px) {
+    h2 {
+      font-size: 1.7rem; } }
+  @media only screen and (min-width: 600px) {
+    h2 {
+      font-size: 2.5rem; } }
+  h2 span {
+    font-weight: 400; }
 
 h3 {
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.6;
-  margin: 0 0 1rem;
-}
-@media only screen and (min-width: 480px) {
-  h3 {
-    font-size: 1.4rem;
-  }
-}
-@media only screen and (min-width: 600px) {
-  h3 {
-    font-size: 2.2rem;
-  }
-}
-h3 span {
-  font-weight: 400;
-}
+  margin: 0 0 1rem; }
+  @media only screen and (min-width: 480px) {
+    h3 {
+      font-size: 1.4rem; } }
+  @media only screen and (min-width: 600px) {
+    h3 {
+      font-size: 2.2rem; } }
+  h3 span {
+    font-weight: 400; }
 
 .main-section {
   max-width: 1000px;
@@ -340,23 +321,20 @@ h3 span {
 
 .nav-menu {
   background-color: #474448;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-.nav-menu .main-section {
-  display: flex;
-  margin-top: 0;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff;
-}
-.nav-menu .menu_icon {
-  fill: #ffffff;
-}
+  padding-bottom: 0.5rem; }
+  .nav-menu .main-section {
+    display: flex;
+    margin-top: 0;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff; }
+  .nav-menu .menu_icon {
+    fill: #ffffff; }
 
 .logpage {
   background-color: yellow;
@@ -374,35 +352,80 @@ h3 span {
   text-align: left;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-.week_view h3 {
-  margin: 0;
-}
-.week_view:nth-child(1) {
-  margin-top: 0;
-}
-.week_view.red {
-  border-left-color: #ea3546;
-}
-.week_view.green {
-  border-left-color: #35ff69;
-}
-.week_view.yellow {
-  border-left-color: #f9c80e;
-}
-.week_view.tick {
-  background-color: #60abf7;
-  color: #0c6cb2;
-}
+  align-items: center; }
+  .week_view h3 {
+    margin: 0; }
+  .week_view:nth-child(1) {
+    margin-top: 0; }
+  .week_view.red {
+    border-left-color: #ea3546; }
+  .week_view.green {
+    border-left-color: #35ff69; }
+  .week_view.yellow {
+    border-left-color: #f9c80e; }
+  .week_view.tick {
+    background-color: #60abf7;
+    color: #0c6cb2; }
 
 .chevron_default {
-  fill: #474448;
-}
+  fill: #474448; }
 
 .tick_complete {
-  fill: #0c6cb2;
-}
+  fill: #0c6cb2; }
+
+.dashboard-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  text-align: center; }
+.dashboard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  padding: 1rem; }
+  .dashboard-item:nth-child(odd) {
+    padding-left: 0; }
+  .dashboard-item:nth-child(even) {
+    padding-right: 0; }
+.dashboard-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 8rem;
+  height: 8rem; }
+.dashboard-fraction {
+  position: absolute;
+  font-weight: 500; }
+.dashboard-confidence {
+  width: 6rem;
+  height: 0.25rem;
+  background-color: #c9dee8; }
+  .dashboard-confidence.red {
+    background-color: #ea3546; }
+  .dashboard-confidence.yellow {
+    background-color: #f9c80e; }
+  .dashboard-confidence.green {
+    background-color: #35ff69; }
+.dashboard-header {
+  margin: 0; }
+  .dashboard-header a {
+    text-decoration: none;
+    color: #1c0b19;
+    transition: color ease-in-out 0.3s; }
+    .dashboard-header a:hover {
+      color: #474448; }
+
+.circle {
+  stroke: #c9dee8; }
+
+.progress-circle {
+  stroke: #60abf7;
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%; }
 
 .dashboard-section {
   display: flex;
