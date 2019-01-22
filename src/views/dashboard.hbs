@@ -1,14 +1,9 @@
 <main class="page-content">
 
-    <section class="main-section">
-        <h1>This is the dashboard</h1>
-        <p>get all weeks, loop through and output here</p>
-    </section>
-
-    <section class="main-section dashboard-section">
+    <section class="main-section dashboard-section"> 
         {{#each weeks}}
             <article class="dashboard-item">
-
+                
                 <div class="dashboard-progress">
                     <svg class="dashboard-icon pc-complete_{{pc_complete}}" height="120" width="120">
                         <circle class="circle" stroke-width="15" fill="transparent" r="45" cx="60" cy="60"/>
@@ -17,10 +12,11 @@
                     <div class="dashboard-fraction">{{taskFraction completed_tasks}}/{{task_count}}</div>
                 </div>
                 <div class="dashboard-confidence {{trafficLight confidence_levels}}"></div>
-                <h3 class="dashboard-header"><a href="/{{url_slug}}">{{id}} - {{week_name}}</a></h3>
+                <h3 class="dashboard-header">{{id}} - {{week_name}}</h3>
+                <a class="dashboard-link" href="/{{url_slug}}"><span class="hidden">{{week_name}}</span></a>
+                
             </article>
         {{/each}}
-
     </section>
 
 </main>
