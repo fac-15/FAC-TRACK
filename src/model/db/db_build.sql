@@ -36,8 +36,7 @@ CREATE TABLE logs (
 
 
 -- Weeks table
--- error: insert or update on table "tasks" violates foreign key constraint "tasks_week_id_fkey"
-INSERT INTO weeks (week_name, url_slug) values ('Toolkit', 'tooklit');
+INSERT INTO weeks (week_name, url_slug) values ('Toolkit', 'toolkit');
 INSERT INTO weeks (week_name, url_slug) values ('Testing', 'testing');
 INSERT INTO weeks (week_name, url_slug) values ('API', 'api');
 INSERT INTO weeks (week_name, url_slug) values ('Node Core', 'node-core');
