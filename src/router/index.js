@@ -13,8 +13,6 @@ router.get("/", (req, res) => {
 });
 
 
-
-
 // dashboard
 router.get("/dashboard", (req, res) => {
 
@@ -52,7 +50,6 @@ router.get("/dashboard", (req, res) => {
 
 });
 
-
 // week route(s)
 router.get(
   "/week-:name(1_toolkit|2_testing|3_api|4_node-core|5_node-2|6_postgresql|7_authentication|8_express-handlebars)?",
@@ -76,32 +73,25 @@ router.get(
   }
 );
 
-
-
 // task routes
 // NOTE: this can be:  http://localhost:5002/dashbsxoard/sd   and still be a valid url
-// - in the console, this is a 404 page not found 
+// - in the console, this is a 404 page not found
 router.get("/:week/:tasks/", (req, res) => {
+  const weekName = req.params.week;
+  const taskName = req.params.tasks;
+  // console.log(weekName, taskName);
 
-    const weekName = req.params.week;
-    const taskName = req.params.tasks;
-    // console.log(weekName, taskName);
-
-     dbhelpers
-       .getRepoLink(taskName)
-       .then(data => {
-         console.log("get repo link where taskName equals dataname: ", data);
-         res.render("log", { name: weekName, tasks: taskName, repo_link: data });
-       })
-       .catch(err => {
-        //  console.log("/weeks error: ", err);
-        res.status(err, 500);
-       });
-
+  dbhelpers
+    .getRepoLink(taskName)
+    .then(data => {
+      console.log("get repo link where taskName equals dataname: ", data);
+      res.render("log", { name: weekName, tasks: taskName, repo_link: data });
+    })
+    .catch(err => {
+      //  console.log("/weeks error: ", err);
+      res.status(err, 500);
+    });
 });
-
-
-
 
 // task routes
 // 1 - 8
