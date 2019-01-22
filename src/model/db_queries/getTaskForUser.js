@@ -17,9 +17,10 @@ const db = require("../db/db_connection");
 // get ALL tasks and their status for a particular user, by user id
 // - want to do this by username
 // - want to add in week also!
-const getTaskForUser = (username, weekId) => new Promise((resolve, reject) => {
+const getTaskForUser = (username, weekId) =>
+  new Promise((resolve, reject) => {
     db.query(
-      `SELECT completion, confidence, task_id, name from logs l inner join users u on u.id = l.user_id INNER JOIN tasks t on l.task_id = t.id INNER JOIN weeks w on t.week_id = w.id  WHERE username = '${username}' and week_id = ${weekId}`,
+      `SELECT completion, confidence, task_id, url_slug, task_slug, name from logs l inner join users u on u.id = l.user_id INNER JOIN tasks t on l.task_id = t.id INNER JOIN weeks w on t.week_id = w.id  WHERE username = '${username}' and week_id = ${weekId}`,
       (err, res) => {
         if (err) {
           reject("no weeks found in database ", err);

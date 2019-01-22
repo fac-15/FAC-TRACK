@@ -27,7 +27,7 @@ router.get("/dashboard", (req, res) => {
           // 4. taskCount adds number of tasks for each week
           taskCount(logsRes)
             .then(taskRes => {
-              // console.log(taskRes);
+              //console.log(taskRes);
               res.render("dashboard", { weeks: taskRes });
             })
             .catch(taskErr => {
@@ -48,13 +48,14 @@ router.get("/dashboard", (req, res) => {
 router.get("/:week", (req, res) => {
   // 1. check url
   const week = req.params.week;
+  //console.log("req.params :", req.params);
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
     .then(data => {
       // 3. if found, get week details
       if (data.length > 0) {
-        // console.log("Success", data);
+        //console.log("Success", data);
 
         // console.log(data[0].week_name);
         // 4. get week name and id
@@ -65,7 +66,8 @@ router.get("/:week", (req, res) => {
         dbhelpers
           .getTaskForUser("dave", weekId)
           .then(data => {
-            // console.log("response from getTasksByWeek/router index: ", data);
+            //console.log("response from getTasksByWeek/router index: ", data);
+
             res.render("week", {
               name: weekName,
               tasks: data,
