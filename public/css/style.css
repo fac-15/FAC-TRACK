@@ -286,30 +286,33 @@ h3 {
 .logpage {
   background-color: yellow; }
 
-.week_view {
+.logo {
+  margin-top: 0; }
+
+.week-view {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
   border-left: 0.5rem solid transparent;
   padding: 1rem;
-  margin-top: 0.5rem;
   background-color: #c9dee8;
   color: #474448;
   text-align: left;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
-  .week_view h3 {
+  align-items: center;
+  text-decoration: none; }
+  .week-view h3 {
     margin: 0; }
-  .week_view:nth-child(1) {
-    margin-top: 0; }
-  .week_view.red {
+  li .week-view {
+    margin-top: 0.5rem; }
+  .week-view.red {
     border-left-color: #ea3546; }
-  .week_view.green {
+  .week-view.green {
     border-left-color: #35ff69; }
-  .week_view.yellow {
+  .week-view.yellow {
     border-left-color: #f9c80e; }
-  .week_view.tick {
+  .week-view.tick {
     background-color: #60abf7;
     color: #0c6cb2; }
 
@@ -324,13 +327,15 @@ h3 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
-  text-align: center; }
+  text-align: center;
+  margin-top: 0; }
 .dashboard-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 45%;
-  padding: 1rem; }
+  padding: 1rem;
+  position: relative; }
   .dashboard-item:nth-child(odd) {
     padding-left: 0; }
   .dashboard-item:nth-child(even) {
@@ -357,12 +362,18 @@ h3 {
     background-color: #35ff69; }
 .dashboard-header {
   margin: 0; }
-  .dashboard-header a {
-    text-decoration: none;
-    color: #1c0b19;
-    transition: color ease-in-out 0.3s; }
-    .dashboard-header a:hover {
-      color: #474448; }
+.dashboard-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 1rem;
+  text-decoration: none;
+  transition: all ease-in-out 0.3s; }
+  .dashboard-link:hover {
+    background-color: rgba(201, 222, 232, 0.25); }
 
 .circle {
   stroke: #c9dee8; }
