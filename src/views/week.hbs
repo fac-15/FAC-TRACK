@@ -6,7 +6,7 @@
 
         <li class=" week_view {{trafficLight confidence}} {{taskComplete completion}}">
 
-          <h3>Task {{task_id}}: <span>{{name}}</span></h3>
+          <a href="/{{url_slug}}/{{task_slug}}"> <h3>Task {{task_id}}: <span>{{name}}</span></h3></a>
 
           {{#if completion}}
           <svg
