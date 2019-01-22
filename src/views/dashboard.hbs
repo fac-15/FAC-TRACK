@@ -8,6 +8,11 @@
     <section class="main-section dashboard-section">
         {{#each weeks}}
             <article class="dashboard-item">
+
+            <svg class="dashboard-icon" height="120" width="120">
+                <circle class="background-circle" stroke="grey" stroke-width="15" fill="transparent" r="45" cx="60" cy="60"/>
+                <circle class="progress-circle" stroke="blue" stroke-width="15" fill="transparent" r="45" cx="60" cy="60"/>
+            </svg>
                 <div class="dashboard-progress">Tasks Completed: {{completed_tasks}} / {{task_count}}</div>
                 <div class="dashboard-confidence">Average Confidence: {{confidence_levels}}</div>
                 <h3><a href="/{{url_slug}}">{{id}} - {{week_name}}</a></h3>
