@@ -1,44 +1,32 @@
 <main class="page-content">
+
     <section class="main-section">
         <h1>This is the dashboard</h1>
-    </section>
-    <section class="main-section">
         <p>get all weeks, loop through and output here</p>
     </section>
 
-    <section class="main-section">
-        <!-- {{#each weeks}}
+    <section class="main-section dashboard-section">
+        {{#each weeks}}
             <article class="dashboard-item">
-
-                <div class="dashboard-progress"></div>
-                <div class="dashboard-confidence"></div>
-                <h3>{{id}} - {{week_name}}</h3>
+                <div class="dashboard-progress">Tasks Completed: {{completed_tasks}} / {{task_count}}</div>
+                <div class="dashboard-confidence">Average Confidence: {{confidence_levels}}</div>
+                <h3><a href="/{{url_slug}}">{{id}} - {{week_name}}</a></h3>
                 <!-- week-${id}_${lowercaseHyphen week_name} -->
+            </article>
+        {{/each}}
 
-            <!-- </article>
-        {{/each}} -->
+          <h3>Static Week outputs</h3>
 
-        {{confidenceCal data}}
-
-
-
-
-            <h3>Static Week outputs</h3>
-
-            <ul>
-                <li><a href="/week-1_toolkit">Toolkit</a></li>
-                <li><a href="/week-2_testing">Testing</a></li>
-                <li><a href="/week-3_api">Api</a></li>
-                <li><a href="/week-4_node-core">Node 1</a></li>
-                <li><a href="/week-5_node-2">Node 2</a></li>
-                <li><a href="/week-6_postgresql">Postgresql</a></li>
-                <li><a href="/week-7_authentication">Authentication</a></li>
-                <li><a href="/week-8_express-handlebars">Express</a></li>
-
-            </ul>
-
-
-
+          <ul>
+              <li><a href="/week-1_toolkit">Toolkit</a></li>
+              <li><a href="/week-2_testing">Testing</a></li>
+              <li><a href="/week-3_api">Api</a></li>
+              <li><a href="/week-4_node-core">Node 1</a></li>
+              <li><a href="/week-5_node-2">Node 2</a></li>
+              <li><a href="/week-6_postgresql">Postgresql</a></li>
+              <li><a href="/week-7_authentication">Authentication</a></li>
+              <li><a href="/week-8_express-handlebars">Express</a></li>
+          </ul>
     </section>
 
 </main>

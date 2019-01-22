@@ -91,3 +91,15 @@ test("getTasksByWeek for week 0", () => {
 //     );
 //   });
 // });
+// });
+
+test("getTasksByWeek for week 0", () => {
+  testBuild((error, response) => {
+    if (error) {
+      return error;
+    }
+    expect.assertions(1);
+    expect(queryIndex.getTasksByWeek(0)).resolves.toEqual([]);
+  });
+});
+

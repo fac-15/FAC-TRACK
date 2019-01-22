@@ -1,3 +1,4 @@
+
 .week_view {
   display: block;
   width: 100%;
@@ -48,10 +49,23 @@
 .tick_complete {
   fill: $blue-dark;
 }
-// .red {
-//   position: static;
-//   z-index: -1;
-//   width: 50px;
-//   height: 54px;
-//   background-color: $red;
-// }
+
+
+// dashboard
+.dashboard {
+    &-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; // centrally align
+        align-items: baseline; // align items to bottom of their containers
+        text-align: center;
+    }
+    &-item {
+        width: 45%;
+        padding: 1rem;
+        // @media only screen and (min-width: 600px) {
+        //     padding: 0 2rem;
+        // }
+    }
+}
+
