@@ -4,35 +4,38 @@
         <ul>
         {{#each tasks}}
 
-        <li class=" week_view {{trafficLight confidence}} {{taskComplete completion}}">
+        <li>
 
-          <h3>Task {{task_id}}: <span>{{name}}</span></h3>
+          <a class="week-view {{trafficLight confidence}} {{taskComplete completion}}" href="/{{url_slug}}/{{task_slug}}">
+            <h3>Task {{task_id}}: <span>{{name}}</span></h3>
 
-          {{#if completion}}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-          >
-            <path
-              class="tick_complete"
-              d="M18 32.34L9.66 24l-2.83 2.83L18 38l24-24-2.83-2.83z"
-            />
-          </svg>
-          {{else}}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-          >
-            <path
-              class="chevron_default"
-              d="M20 12l-2.83 2.83L26.34 24l-9.17 9.17L20 36l12-12z"
-            />
-          </svg>
-          {{/if}}
+            {{#if completion}}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+            >
+              <path
+                class="tick_complete"
+                d="M18 32.34L9.66 24l-2.83 2.83L18 38l24-24-2.83-2.83z"
+              />
+            </svg>
+            {{else}}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+            >
+              <path
+                class="chevron_default"
+                d="M20 12l-2.83 2.83L26.34 24l-9.17 9.17L20 36l12-12z"
+              />
+            </svg>
+            {{/if}}
+
+          </a>
 
 
         </li>

@@ -1,56 +1,54 @@
 <main class="page-content">
-<section class="main-section header">
-<h1>{{name}}</h1>
-<a href="{{repoLink}}" type="button">Repo Link</a>
+  <section class="main-section header">
+    <h1>{{name}}</h1>
+    <a href="{{repoLink}}" type="button">Repo Link</a>
 
 
- <form action="/logData"  method="post">
+     <form action="/logData"  method="post">
 
-  <section class="formSection">
-    <h2>Complete:</h2>
-    <section class="completed">
-      <section class="checkbox">
-        <input type="checkbox" value="true" name="completion" /><h5>Complete</h5>
-      </section>
-      <section class="checkbox">
-        <input type="checkbox" value="false" name="completion" /><h5>Outstanding</h5>
-      </section>
-
-
-  </section>
-  </section>
-
-<section class="formSection">
-  <h2>Confidence Level:</h2>
-  <section class="completed">
-  <section class="radioButton">
-    <input type="radio" name="confidence" value="3">
-    <h5>Low</h5>
-    </section>
-    <section class="radioButton">
-      <input type="radio" name="confidence" value="2">
-      <h5>Medium</h5>
-      </section>
-      <section class="radioButton">
-        <input type="radio" name="confidence" value="1">
-        <h5>High</h5>
+        <section class="form-section">
+          <h2>Complete:</h2>
+          <section class="completed">
+            <label class="checkbox-label">Completed
+              <input class="checkbox-input" type="checkbox" value="true" name="completion"/>
+              <span class="checkmark"></span>
+            </label>
+          </section>
         </section>
 
+      <section class="form-section">
+        <h2>Confidence Level:</h2>
+        <section class="completed radio-group">
+
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="3">
+            <h5>Low</h5>
+          </section>
+
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="2">
+            <h5>Medium</h5>
+          </section>
+
+          <section class="radioButton">
+            <input type="radio" name="confidence" value="1">
+            <h5>High</h5>
+          </section>
+
+        </section>
+      </section>
+
+      <section class="textarea">
+        <h2 class="notes">Notes:</h2>
+        <textarea name="notes" rows="10" cols="40">
+        </textarea>
+      </section>
+
+
+      <section class="logButton">
+        <button type="submit" class="save">Save</button>
+      </section>
+
+    </form>
   </section>
-</section>
-
-  <section class="textarea">
-    <h2 class="notes">Notes:</h2>
-    <textarea name="notes" rows="10" cols="40">
-    </textarea>
-
-  </section>
-
-
-<section class="logButton">
-  <button type="submit" class="save">Save</button>
-</section>
-
-</form>
-    </section>
 </main>

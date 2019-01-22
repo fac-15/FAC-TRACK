@@ -27,7 +27,7 @@ router.get("/dashboard", (req, res) => {
           // 4. taskCount adds number of tasks for each week
           taskCount(logsRes)
             .then(taskRes => {
-              // console.log(taskRes);
+              //console.log(taskRes);
               res.render("dashboard", { weeks: taskRes });
             })
             .catch(taskErr => {
@@ -48,13 +48,14 @@ router.get("/dashboard", (req, res) => {
 router.get("/:week", (req, res) => {
   // 1. check url
   const week = req.params.week;
+  //console.log("req.params :", req.params);
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
     .then(data => {
       // 3. if found, get week details
       if (data.length > 0) {
-        // console.log("Success", data);
+        //console.log("Success", data);
 
         // console.log(data[0].week_name);
         // 4. get week name and id
@@ -65,7 +66,8 @@ router.get("/:week", (req, res) => {
         dbhelpers
           .getTaskForUser("dave", weekId)
           .then(data => {
-            // console.log("response from getTasksByWeek/router index: ", data);
+            //console.log("response from getTasksByWeek/router index: ", data);
+
             res.render("week", {
               name: weekName,
               tasks: data,
@@ -87,31 +89,34 @@ router.get("/:week", (req, res) => {
     });
 });
 
+
+
+
 // task routes
 router.get("/:week/:tasks", (req, res) => {
   // 1. check url
   const week = req.params.week;
-  // console.log("this is the week name", week);
-  // 2. check task
 
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
     .then(data => {
+
       // 3. if found, get week details
       if (data.length > 0) {
-        // console.log("Success", data);
+        // console.log("weekdata: ", data);
+
         // 4. get week name and id and task from url_slug
-        const weekName = data[0].week_name;
         const weekId = data[0].id;
-        const task = req.params.tasks;
-        // console.log("this is the task name", task);
+        const weekName = data[0].week_name;
+
+        const task_slug = req.params.tasks;
+        // console.log(task_slug);
+
         // 5. get task data
         dbhelpers
-          .taskExist(task)
+          .taskExist(task_slug)
           .then(taskData => {
-            //
-            // console.log("this is task data", taskData);
 
             // 6. get task data for a specific user
             const task_id = taskData[0].id;

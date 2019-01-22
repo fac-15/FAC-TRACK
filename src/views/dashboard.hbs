@@ -1,32 +1,23 @@
 <main class="page-content">
 
-    <section class="main-section">
-        <h1>This is the dashboard</h1>
-        <p>get all weeks, loop through and output here</p>
-    </section>
-
-    <section class="main-section dashboard-section">
+    <section class="main-section dashboard-section"> 
         {{#each weeks}}
             <article class="dashboard-item">
-                <div class="dashboard-progress">Tasks Completed: {{completed_tasks}} / {{task_count}}</div>
-                <div class="dashboard-confidence">Average Confidence: {{confidence_levels}}</div>
-                <h3><a href="/{{url_slug}}">{{id}} - {{week_name}}</a></h3>
-                <!-- week-${id}_${lowercaseHyphen week_name} -->
+                
+                <div class="dashboard-progress">
+                    <svg class="dashboard-icon pc-complete_{{pc_complete}}" height="120" width="120">
+                        <circle class="circle" stroke-width="15" fill="transparent" r="45" cx="60" cy="60"/>
+                        <circle class="progress-circle circle" stroke-width="15" fill="transparent" r="45" cx="60" cy="60"/>
+                    </svg>
+                    <div class="dashboard-fraction">{{taskFraction completed_tasks}}/{{task_count}}</div>
+                </div>
+                <div class="dashboard-confidence {{trafficLight confidence_levels}}"></div>
+                <h3 class="dashboard-header">{{id}} - {{week_name}}</h3>
+                <a class="dashboard-link" href="/{{url_slug}}"><span class="hidden">{{week_name}}</span></a>
+                
             </article>
         {{/each}}
-
-          <h3>Static Week outputs</h3>
-
-          <ul>
-              <li><a href="/week-1_toolkit">Toolkit</a></li>
-              <li><a href="/week-2_testing">Testing</a></li>
-              <li><a href="/week-3_api">Api</a></li>
-              <li><a href="/week-4_node-core">Node 1</a></li>
-              <li><a href="/week-5_node-2">Node 2</a></li>
-              <li><a href="/week-6_postgresql">Postgresql</a></li>
-              <li><a href="/week-7_authentication">Authentication</a></li>
-              <li><a href="/week-8_express-handlebars">Express</a></li>
-          </ul>
     </section>
 
 </main>
+<script src="js/dashboard.js"></script>

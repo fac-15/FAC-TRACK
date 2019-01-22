@@ -1,26 +1,30 @@
+.logo {
+  margin-top: 0;
+}
 
-.week_view {
+// week views
+.week-view {
   display: block;
   width: 100%;
   border-radius: 0.5rem;
   border-left: 0.5rem solid transparent;
   // height: 54px;
   padding: 1rem;
-  margin-top: 0.5rem;
   background-color: $grey-light;
   color: $grey-dark;
   text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
 
   h3 {
     margin: 0;
   }
 
-  // padding for first element
-  &:nth-child(1) {
-    margin-top: 0;
+  // top margin
+  li & {
+    margin-top: 0.5rem;
   }
 
   // different states (classes changed by handlers)
@@ -51,6 +55,8 @@
 }
 
 
+
+
 // dashboard
 .dashboard {
     &-section {
@@ -59,13 +65,82 @@
         justify-content: center; // centrally align
         align-items: baseline; // align items to bottom of their containers
         text-align: center;
+        margin-top: 0;
     }
     &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 45%;
         padding: 1rem;
-        // @media only screen and (min-width: 600px) {
-        //     padding: 0 2rem;
-        // }
+        position: relative;
+        // items on the left
+        &:nth-child(odd){
+          padding-left: 0;
+        }
+        // items on the right
+        &:nth-child(even){
+          padding-right: 0;
+        }
     }
+    // progress chart
+    &-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 8rem;
+      height: 8rem;
+    }
+    &-fraction {
+      position: absolute;
+      font-weight: $medium;
+    }
+    // confidence levels
+    &-confidence {
+      width: 6rem;
+      height: 0.25rem;
+      background-color: $grey-light;
+      &.red {
+        background-color: $red;
+      }
+      &.yellow {
+        background-color: $yellow;
+      }
+      &.green {
+        background-color: $green;
+      }
+    }
+    // header
+    &-header {
+      margin: 0;
+    }
+
+    // hover effects on link
+    &-link {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 0;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: all ease-in-out 0.3s;
+      &:hover {
+        background-color: rgba($grey-light, 0.25);
+      }
+    }
+}
+
+// round dashboard progress indicators
+.circle {
+  stroke: $grey-light;
+}
+.progress-circle {
+  stroke: $blue;
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }
 

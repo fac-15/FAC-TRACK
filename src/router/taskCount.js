@@ -8,6 +8,7 @@ const dbhelpers = require("../model/db_queries/index.js");
 // 3. loop through all weeks
 // 4. create array of tasks for each week
 // 5. add array length as task_count property on each week object
+// 6. add percentage of tasks completed for the week
 
 // 1.
 const taskCount = weeks => {
@@ -30,6 +31,9 @@ const taskCount = weeks => {
 
                     // 5.
                     week.task_count = tasksForWeek.length;
+
+                    // 6.
+                    week.pc_complete = (week.completed_tasks / week.task_count) * 100;
 
                 })
                 resolve(weeks);
