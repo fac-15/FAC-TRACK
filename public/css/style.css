@@ -340,7 +340,6 @@ h3 span {
 
 .nav-menu {
   background-color: #474448;
-  position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
@@ -358,8 +357,77 @@ h3 span {
   fill: #ffffff;
 }
 
-.logpage {
-  background-color: yellow;
+form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.2rem;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.notes {
+  text-align: left;
+  align-items: center;
+}
+
+.completed {
+  display: flex;
+  flex-direction: row;
+}
+
+.textarea {
+  text-align: left;
+}
+
+.logButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.radioButton {
+  padding: 0 0.3rem;
+}
+
+.checkbox {
+  padding: 0 0.5rem;
+}
+
+input[type=radio] {
+  box-sizing: content-box;
+  padding: 0;
+  transform: scale(1.5);
+}
+
+input[type=checkbox] {
+  box-sizing: content-box;
+  padding: 0;
+  transform: scale(1.5);
+}
+
+textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 3px;
+  border-radius: 10px;
+  border: 1.2px solid #000;
+}
+
+.save {
+  font-size: 1.5rem;
+  background-color: #676e72;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
 .week_view {
