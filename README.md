@@ -51,3 +51,16 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 ### Run Sass locally to compile css
 - `sass --watch scss/style.scss:css/style.css`
+
+
+### Todo
+
+Do some proper tests 
+Finish pull data into dash that will display users overall confidence and completed
+Use handlebars to display that data
+Post data to logs table from logs view 
+Create database data
+Work on UI to make it look like the prototype
+Route that work (made slug or regex)
+
+Create real users
