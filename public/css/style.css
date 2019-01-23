@@ -336,12 +336,14 @@ h3 {
 .checkbox-input {
   position: absolute;
   cursor: pointer;
-  opacity: 0; }
-  .checkbox-input:checked ~ .checkmark {
+  opacity: 0;
+  height: 0;
+  width: 0; }
+  .checkbox-input:checked ~ .checkbox-checkmark {
     background-color: #60abf7; }
-    .checkbox-input:checked ~ .checkmark:after {
+    .checkbox-input:checked ~ .checkbox-checkmark:after {
       display: block; }
-.checkbox:hover .checkbox-input ~ .checkmark {
+.checkbox:hover .checkbox-input ~ .checkbox-checkmark {
   background-color: #676e72; }
 .checkbox-checkmark {
   position: absolute;
@@ -413,6 +415,9 @@ h3 {
 
 .logo {
   margin-top: 0; }
+
+.page-content {
+  padding-bottom: 4rem; }
 
 .week-view {
   display: block;
