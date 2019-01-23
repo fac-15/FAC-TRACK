@@ -44,20 +44,22 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
-
-
-
 // week route(s)
 router.get("/:week", (req, res) => {
+  /// calling getTaskByTaskId
+  dbhelpers
+    .getTaskByTaskId(9)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+
   // 1. check url
   const week = req.params.week;
   //console.log("req.params :", req.params);
-  
+
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
     .then(weekData => {
-      
       // 3. if found, get week details
       if (weekData.length > 0) {
         //console.log("Success", data);
@@ -73,16 +75,14 @@ router.get("/:week", (req, res) => {
           .then(logData => {
             // console.log("response from getTasksByWeek/router index: ", logData);
 
-
-
             // _____________________________
             // need to output unlogged tasks:
-            
+
             // 6. get all tasks for the week - ignoring user logs
             // - need to get url_slug from weeks too
-            dbhelpers.getTasksByWeek(weekId)
+            dbhelpers
+              .getTasksByWeek(weekId)
               .then(taskRes => {
-
                 // 1. make 2 arrays of logged and unlogged ids
                 // 2. if id(s) exists in unlogged that doesn't exist in log, get that id(s)
                 // 3. push item(s) with id(s) to logData array unlogged item
@@ -94,8 +94,10 @@ router.get("/:week", (req, res) => {
 
                 // a better solution from here, ain't gonna lie:
                 // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
-                const allTasks = taskRes.filter(obj => logData.indexOf(obj) == -1);
-                console.log(allTasks, 'user logs: ', logData);
+                const allTasks = taskRes.filter(
+                  obj => logData.indexOf(obj) == -1
+                );
+                //console.log(allTasks, "user logs: ", logData);
                 // doesn't get url slug
 
                 // render the week with all tasks
@@ -104,26 +106,16 @@ router.get("/:week", (req, res) => {
                   tasks: logData,
                   number: weekId
                 });
-
-
-
-
               })
               .catch(taskErr => {
                 console.log(taskErr);
-              })
-
-
-
+              });
 
             // res.render("week", {
             //   name: weekName,
             //   tasks: logData,
             //   number: weekId
             // });
-
-
-
           })
           .catch(err => {
             // console.log("/weeks error: ", err);
@@ -140,9 +132,6 @@ router.get("/:week", (req, res) => {
     });
 });
 
-
-
-
 // task routes
 router.get("/:week/:tasks", (req, res) => {
   // 1. check url
@@ -152,7 +141,6 @@ router.get("/:week/:tasks", (req, res) => {
   dbhelpers
     .weekExist(week)
     .then(data => {
-
       // 3. if found, get week details
       if (data.length > 0) {
         // console.log("weekdata: ", data);
@@ -168,7 +156,6 @@ router.get("/:week/:tasks", (req, res) => {
         dbhelpers
           .taskExist(task_slug)
           .then(taskData => {
-
             // 6. get task data for a specific user
             const task_id = taskData[0].id;
 

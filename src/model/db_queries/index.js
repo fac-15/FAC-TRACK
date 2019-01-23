@@ -6,6 +6,7 @@ module.exports = {
   getSingleTaskForUser: require("./getSingleTaskForUser"),
   weekExist: require("./weekExist"),
   taskExist: require("./taskExist"),
-  getAllTasksForUser: require('./getAllTasksForUser'),
-  getAllTasks: require('./getAllTasks'),
+  getAllTasksForUser: require("./getAllTasksForUser"),
+  getAllTasks: require("./getAllTasks"),
+  getTaskByTaskId: require("./getTaskByTaskId")
 };
