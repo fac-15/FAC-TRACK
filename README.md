@@ -7,7 +7,7 @@ Travis link - [https://travis-ci.com/fac-15/FAC-TRACK](https://travis-ci.com/fac
 
 Codecov link - [https://codecov.io/gh/fac-15/FAC-TRACK](https://codecov.io/gh/fac-15/FAC-TRACK)
 
-Heroku link - [https://fac-track.herokuapp.com/](https://fac-track.herokuapp.com/)
+Heroku link - [https://factrack.herokuapp.com/](https://fac-track.herokuapp.com/)
 
 All Weeks and Tasks in FAC Curriculum - [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1MwHAFfLx2M5QbLrmUAFfXMMXEtk70T4te4qtPe0aabo/edit#gid=0)
 
