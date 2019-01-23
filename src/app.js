@@ -2,6 +2,7 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
+const favicon = require("serve-favicon")
 // yet to write files
 const routes = require("./router/index");
 const helpers = require("./views/helpers/index");
@@ -34,6 +35,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "public")));
+
+
+app.use(favicon(path.join(__dirname, "..", "public", "resources/images/ft-icon.ico")));
 
 // post data request from logs, takes the req.body and sends it throught the database query
 // page refreshes
