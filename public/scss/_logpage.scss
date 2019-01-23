@@ -37,18 +37,23 @@
     cursor: pointer;
     user-select: none;
   }
+
+  // hide the default input
   &-input {
     position: absolute;
     cursor: pointer;
     opacity: 0;
-    &:checked ~ .checkmark {
+    height: 0;
+    width: 0;
+    // checked state of custom input
+    &:checked ~ .checkbox-checkmark {
       background-color: $blue;
       &:after {
         display: block;
       }
     }
   }
-  &:hover .checkbox-input ~ .checkmark {
+  &:hover .checkbox-input ~ .checkbox-checkmark {
     background-color: $grey-mid;
   }
 
@@ -74,6 +79,11 @@
     }
   }
 }
+
+
+
+
+
 
 
 // ________________________________

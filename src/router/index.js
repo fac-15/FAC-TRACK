@@ -46,11 +46,7 @@ router.get("/dashboard", (req, res) => {
 
 // week route(s)
 router.get("/:week", (req, res) => {
-  /// calling getTaskByTaskId
-  dbhelpers
-    .getTaskByTaskId(9)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
+  
 
   // 1. check url
   const week = req.params.week;
@@ -87,18 +83,38 @@ router.get("/:week", (req, res) => {
                 // 2. if id(s) exists in unlogged that doesn't exist in log, get that id(s)
                 // 3. push item(s) with id(s) to logData array unlogged item
 
-                // const logged = [];
-                // const unLogged = [];
-                // logData.map(log => logged.push(log.task_id));
-                // taskRes.map(task => unLogged.push(task.id));
+                const logged = [];
+                const allTasks = [];
+                logData.map(log => logged.push(log.task_id));
+                taskRes.map(task => allTasks.push(task.id));
+
+                const notCompleted = allTasks.filter(obj => logged.indexOf(obj) == -1);
+                console.log('not completed ', notCompleted);
 
                 // a better solution from here, ain't gonna lie:
                 // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
-                const allTasks = taskRes.filter(
-                  obj => logData.indexOf(obj) == -1
-                );
+                // const allTasks = taskRes.filter(
+                //   obj => logData.indexOf(obj) == -1
+                // );
                 //console.log(allTasks, "user logs: ", logData);
                 // doesn't get url slug
+
+
+                if (notCompleted.length > 0) {
+                  // calling getTaskByTaskId
+                  dbhelpers
+                  .getTaskByTaskId(notCompleted)
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error));
+
+                }
+                
+                
+
+
+
+
+
 
                 // render the week with all tasks
                 res.render("week", {
