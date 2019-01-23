@@ -8,3 +8,5 @@ const trafficLight = number => {
 };
 
 module.exports = trafficLight;
+
+

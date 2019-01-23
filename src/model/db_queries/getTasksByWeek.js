@@ -9,7 +9,7 @@ const db = require('../db/db_connection');
 const getTasksByWeek = week_id => {
 
     return new Promise((resolve, reject) => {
-        db.query(`SELECT name, repo_link from tasks WHERE week_id = '${week_id}' `, (err, res) => {
+        db.query(`SELECT id, name, task_slug, repo_link from tasks WHERE week_id = '${week_id}' `, (err, res) => {
             if (err) {
                 reject('week id not found in database ', err);
             }
