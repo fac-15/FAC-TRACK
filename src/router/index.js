@@ -1,8 +1,14 @@
 const express = require("express");
 const dbhelpers = require("../model/db_queries/index.js");
+
+
 // data processing functions
 const userLogs = require("./userLogs.js");
 const taskCount = require("./taskCount.js");
+
+// was going to refactor this out, but it makes my head hurt:
+// const weekView = require("./weekView.js");
+
 
 // create a new router
 const router = express.Router();
@@ -44,6 +50,11 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
+
+
+
+
+
 // week route(s)
 router.get("/:week", (req, res) => {
   
@@ -51,6 +62,14 @@ router.get("/:week", (req, res) => {
   // 1. check url
   const week = req.params.week;
   //console.log("req.params :", req.params);
+
+  // weekView(week)
+  //   .then(weekRes => {
+  //     res.render("dashboard", { weeks: weekRes });
+  //   })
+  //   .catch(weekErr => {
+  //     console.log("weekView function error: ", weekErr);
+  //   });
 
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
@@ -83,55 +102,56 @@ router.get("/:week", (req, res) => {
                 // 2. if id(s) exists in unlogged that doesn't exist in log, get that id(s)
                 // 3. push item(s) with id(s) to logData array unlogged item
 
+                // 1.
                 const logged = [];
                 const allTasks = [];
                 logData.map(log => logged.push(log.task_id));
                 taskRes.map(task => allTasks.push(task.id));
 
+                // 2.
                 const notCompleted = allTasks.filter(obj => logged.indexOf(obj) == -1);
-                console.log('not completed ', notCompleted);
-
-                // a better solution from here, ain't gonna lie:
-                // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
-                // const allTasks = taskRes.filter(
-                //   obj => logData.indexOf(obj) == -1
-                // );
-                //console.log(allTasks, "user logs: ", logData);
-                // doesn't get url slug
 
 
+                // must have unlogged tasks to run this
                 if (notCompleted.length > 0) {
-                  // calling getTaskByTaskId
                   dbhelpers
-                  .getTaskByTaskId(notCompleted)
-                    .then(response => console.log(response))
-                    .catch(error => console.log(error));
+                  .getTasksById(notCompleted)
+                    .then(response => {
+                      // console.log(response)
+
+
+                      const allTasksForWeek = [...logData, ...response];
+                      
+                      // render with with unlogged tasks added to logData
+                      res.render("week", {
+                        name: weekName,
+                        tasks: allTasksForWeek,
+                        number: weekId
+                      });
+                    }
+                    )
+                    .catch(error => console.log('error getting outstanding tasks: ', error));
 
                 }
                 
+                // user has made a log for all tasks
+                else {
+
+                  // render the week with all tasks
+                  res.render("week", {
+                    name: weekName,
+                    tasks: logData,
+                    number: weekId
+                  });
+
+                }
+
                 
-
-
-
-
-
-
-                // render the week with all tasks
-                res.render("week", {
-                  name: weekName,
-                  tasks: logData,
-                  number: weekId
-                });
               })
               .catch(taskErr => {
                 console.log(taskErr);
               });
 
-            // res.render("week", {
-            //   name: weekName,
-            //   tasks: logData,
-            //   number: weekId
-            // });
           })
           .catch(err => {
             // console.log("/weeks error: ", err);
