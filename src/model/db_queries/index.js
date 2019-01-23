@@ -8,5 +8,7 @@ module.exports = {
   taskExist: require("./taskExist"),
   getAllTasksForUser: require("./getAllTasksForUser"),
   getAllTasks: require("./getAllTasks"),
-  getTaskByTaskId: require("./getTaskByTaskId")
+
+  // get tasks by array of ids
+  getTasksById: require("./getTasksById")
 };
