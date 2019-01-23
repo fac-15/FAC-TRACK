@@ -14,13 +14,14 @@ All Weeks and Tasks in FAC Curriculum - [Google Spreadsheet](https://docs.google
 ---
 
 # FAC-TRACK
+
 Application that allows FAC students past and present to track their learning.
 
 ## Secondary Research
+
 [HACK MD](https://hackmd.io/8j2s6VgTR7ideCsk9rD7ng?both)
 
-
-## Technology Stack 
+## Technology Stack
 
 Express + Handlebars + PostgreSQL
 
@@ -28,19 +29,18 @@ Both Express and Handlebars are great technologies, and will get you a long way.
 This will allow you both to consolidate what you have learned in the first 8 weeks and focus on your product.
 On a similar note, if you want to learn one or more technologies like d3, Leaflet, PWAs, web-sockets, Tachyons or SASS, you may want choose backend technologies you are familiar with, so you enough time to investigate unfamiliar technologies.
 
-+ sass and maybe more
+- sass and maybe more
 
-| **Category**           | **Technology**                                                                            |
-|------------------------|-------------------------------------------------------------------------------------------|
-| Languages              | JavaScript, node, HTML, SCSS, SQL                                                         |
-| Frameworks & Libraries | Express, handlebars, bcrypt.js, bodyparser, env2, pg, serve-favicon                       |
-| Databases              | PostgreSQL                                                                                |
-| Testing                | Jest                                                                                      |
-| Dev Tools / Other      | Nodemon, Travis CI, Heroku, Codecov, Github                                               |
-| Quality Assurance      | Codecov, es-lint, prettier                                                                |
+| **Category**           | **Technology**                                                      |
+| ---------------------- | ------------------------------------------------------------------- |
+| Languages              | JavaScript, node, HTML, SCSS, SQL                                   |
+| Frameworks & Libraries | Express, handlebars, bcrypt.js, bodyparser, env2, pg, serve-favicon |
+| Databases              | PostgreSQL                                                          |
+| Testing                | Jest                                                                |
+| Dev Tools / Other      | Nodemon, Travis CI, Heroku, Codecov, Github                         |
+| Quality Assurance      | Codecov, es-lint, prettier                                          |
 
-
-## Database Design 
+## Database Design
 
 ![fac track db schema](https://user-images.githubusercontent.com/39189687/51178718-65f4be00-18bb-11e9-9b51-058bb82786bc.jpeg)
 
@@ -48,29 +48,32 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 ![screen shot 2019-01-15 at 18 39 28](https://user-images.githubusercontent.com/25176118/51201793-f26fa280-18f4-11e9-95dd-93ac5e8885c5.png)
 
-
 #### Creating a local database for LOCAL_URL (factrack) And TEST_DB_URL (factracktest )
+
 - Connect to postgres, by typing `psql` or `pgcli` in the terminal.
 - Create the database by typing **CREATE DATABASE** `<database_name>`;.
 - Create a superuser with a password by typing **CREATE USER** `<user_name>` **WITH SUPERUSER PASSWORD** '`<password>`'; (the password needs to be in quotes, otherwise you get an error).
 - Change ownership of the database to the new user by typing **ALTER DATABASE** `<database_name>` **OWNER TO** `<user_name>`;
 
-
 ### Database build
+
 - `node src/model/db/db_build.js`
 
 ### Run Sass locally to compile css
-- `sass --watch scss/style.scss:css/style.css`
 
+- `sass --watch scss/style.scss:css/style.css`
 
 ### Todo
 
-Do some proper tests 
+Do some proper tests
 Finish pull data into dash that will display users overall confidence and completed
 Use handlebars to display that data
-Post data to logs table from logs view 
+Post data to logs table from logs view
 Create database data
 Work on UI to make it look like the prototype
 Route that work (made slug or regex)
 
 Create real users
+
+`UPDATE logs SET completion=$1, confidence=$2, notes=$3 WHERE user_id=$4 AND task_id=$5; INSERT INTO logs (completion, confidence, notes, task_id, user_id) SELECT $1,$2,$3,$4,$5 WHERE NOT EXISTS (SELECT 1 FROM logs where user_id=$1);`,
+[completion, confidence, notes, 1, 1],

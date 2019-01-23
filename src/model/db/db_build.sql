@@ -31,7 +31,9 @@ CREATE TABLE logs (
   confidence INTEGER,
   notes VARCHAR(1000),
   task_id INTEGER REFERENCES tasks(id),
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id),
+
+  CONSTRAINT cname UNIQUE (task_id, user_id)
 );
 
 
@@ -106,11 +108,7 @@ INSERT INTO users (username, email, password) values ('craig', 'bsehorsch5@wooth
 INSERT INTO users (username, email, password) values ('erica', 'dfilipputti6@xrea.com', 'FMoeaA7T');
 INSERT INTO users (username, email, password) values ('bill', 'vbruckman7@dyndns.org', 'KarkdKo6p');
 
-
-
--- Logs table
--- task_id, user_id
-
+--logs table
 -- sheila id = 1
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
 INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);

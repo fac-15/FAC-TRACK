@@ -4,15 +4,15 @@
     <h1>{{name}}</h1>
     <a href="{{repoLink}}" target="_blank" type="button">Repo Link</a>
 
+<!-- {{task_slug}} -->
 
      <form class="form-log" action="/logData"  method="post">
 
       <section class="form-section">
         <h3>Complete:</h3>
-        <label class="checkbox-label">Completed
-          <input class="checkbox-input" type="checkbox" value="true" name="completion"/>
-          <span class="checkbox-checkmark"></span>
-        </label>
+
+          <input type="checkbox" checked value="true" name="completion"/>
+
       </section>
 
       <section class="form-section">
@@ -21,19 +21,19 @@
 
           <label class="radio-label">
             <span class="radio-title">Low</span>
-            <input class="radio-input red" type="radio" value="1" name="completion"/>
+            <input class="radio-input red" type="radio" value="1" name="confidence"/>
             <span class="radio-checkmark"></span>
           </label>
 
           <label class="radio-label">
             <span class="radio-title">Medium</span>
-            <input class="radio-input yellow" type="radio" value="2" name="completion"/>
+            <input class="radio-input yellow" type="radio" value="2" name="confidence"/>
             <span class="radio-checkmark"></span>
           </label>
 
           <label class="radio-label">
             <span class="radio-title">High</span>
-            <input class="radio-input green" type="radio" value="3" name="completion"/>
+            <input class="radio-input green" type="radio" value="3" name="confidence"/>
             <span class="radio-checkmark"></span>
           </label>
 
@@ -42,11 +42,12 @@
 
 
       <h3>Notes:</h2>
-      <textarea class="textarea-input" rows="6" cols="40"></textarea>
+      <textarea class="textarea-input" rows="10" cols="40" name="notes"></textarea>
       <section class="form-section right">
         <input class="button-input" type="submit" value="Save"/>
-      </section>    
-      
+      </section>
+
+
 
 
     </form>
