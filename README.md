@@ -30,6 +30,16 @@ On a similar note, if you want to learn one or more technologies like d3, Leafle
 
 + sass and maybe more
 
+| **Category**           | **Technology**                                                                            |
+|------------------------|-------------------------------------------------------------------------------------------|
+| Languages              | JavaScript, node, HTML, SCSS, SQL                                                         |
+| Frameworks & Libraries | Express, handlebars, bcrypt.js, bodyparser, env2, pg, serve-favicon                       |
+| Databases              | PostgreSQL                                                                                |
+| Testing                | Jest                                                                                      |
+| Dev Tools / Other      | Nodemon, Travis CI, Heroku, Codecov, Github                                               |
+| Quality Assurance      | Codecov, es-lint, prettier                                                                |
+
+
 ## Database Design 
 
 ![fac track db schema](https://user-images.githubusercontent.com/39189687/51178718-65f4be00-18bb-11e9-9b51-058bb82786bc.jpeg)

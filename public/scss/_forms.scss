@@ -1,48 +1,39 @@
-// custom checkboxes
-.checkbox {
-  &-label {
-    display: block;
-    position: relative;
-    padding-top: 0.25rem;
-    padding-right: 3rem;
-    cursor: pointer;
-    user-select: none;
+// main form class
+.form-log {
+  width: 100%;
+  padding: 1.5rem 0;
+  h3 {
+    text-align: left;
   }
-  &-input {
-    position: absolute;
-    cursor: pointer;
-    opacity: 0;
-    &:checked ~ .checkmark {
-      background-color: $blue;
-      &:after {
-        display: block;
-      }
+  label {
+    font-size: 0.9rem;
+    text-align: left;
+    @media only screen and (min-width: 480px) {
+      font-size: 1.1rem;
     }
   }
-  &:hover .checkbox-input ~ .checkmark {
-    background-color: $grey-mid;
-  }
 }
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 2rem;
-  width: 2rem;
-  background-color: $grey-light;
-  &:after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 0.5rem;
-    right: 0.75rem;
-    width: 0.5rem;
-    height: 1rem;
-    border: solid white;
-    border-width: 0 0.25rem 0.25rem 0;
-    transform: rotate(45deg);
-  }
+
+// textarea
+.textarea-input {
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid $black;
 }
 
-// custom radio buttons
+// button
+.button-input {
+  border: 0;
+  font-size: 1.5rem;
+  background-color: $red;
+  color: $white;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all ease-in-out 0.3s;
+  &:hover {
+    background-color: darken( $red, 20%);
+  }
+}

@@ -1,69 +1,169 @@
-form {
-  padding-top: 1.5rem;
-  padding-bottom: 1.2rem;
-}
+// see forms _forms.scss for generic form styles
 
+
+// - idea is to set styles that most forms wouldn't have here
+
+
+
+// form sections
 .form-section {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-}
-
-.notes {
   text-align: left;
-  align-items: center;
+  // reset headings
+  h3 {
+    margin: 0 1rem 0 0;
+    text-align: left;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
 }
 
-.completed {
-  display: flex;
-  flex-direction: row;
-}
 
-.textarea {
-  text-align: left;
-}
 
-.logButton {
-  display: flex;
-  justify-content: flex-end;
-  // padding-bottom: 4rem;
-}
 
-.logButton {
-  display: flex;
-  justify-content: flex-end;
-}
-.radioButton {
-  padding: 0 0.3rem;
-}
+
+// custom checkboxes
 .checkbox {
-  padding: 0 0.5rem;
+  &-label {
+    display: block;
+    position: relative;
+    padding-top: 0.25rem;
+    padding-left: 3rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  &-input {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    &:checked ~ .checkmark {
+      background-color: $blue;
+      &:after {
+        display: block;
+      }
+    }
+  }
+  &:hover .checkbox-input ~ .checkmark {
+    background-color: $grey-mid;
+  }
+
+  // checkmark
+  &-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    background-color: $grey-light;
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 0.5rem;
+      right: 0.75rem;
+      width: 0.5rem;
+      height: 1rem;
+      border: solid $white;
+      border-width: 0 0.25rem 0.25rem 0;
+      transform: rotate(45deg);
+    }
+  }
 }
 
-input[type="radio"] {
-  box-sizing: content-box;
-  padding: 0;
-  transform: scale(1.5);
-}
-input[type="checkbox"] {
-  box-sizing: content-box;
-  padding: 0;
-  transform: scale(1.5);
-}
 
-textarea {
-  width: 100%;
-  margin: 5px 0;
-  padding: 3px;
-  border-radius: 10px;
-  border: 1.2px solid #000;
-}
-.save {
-  font-size: 1.5rem;
-  background-color: $grey-mid;
-  color: white;
-  border-radius: 10px;
-  padding: 0.5rem;
+// ________________________________
+
+// custom radio buttons
+
+
+// colour class and variable lists - for use in loop
+$classes : 'red', 'yellow', 'green';   
+$colour_codes : $red, $yellow, $green;
+
+
+.radio {
+
+  // display radio buttons as a row
+  &-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  // radio label - the container element
+  &-label {
+    display: block;
+    position: relative;
+    padding-top: 0.25rem;
+    padding-bottom: 3rem;
+    margin-left: 3rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
+    // hover, unchecked
+    &:hover input ~ .radio-checkmark {
+      background-color: $grey-light;
+    }
+    // remove margin on first child
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+  }
+
+  // hide the original input
+  &-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    // different colours for different confidence
+    // &:checked ~ .radio-checkmark {
+    //   background-color: $grey-light;
+    // }
+    
+    @for $i from 1 through length($classes) {
+      &.#{nth($classes, $i)}:checked ~ .radio-checkmark {
+          background-color : nth($colour_codes, $i);
+      }
+    }
+
+
+    &:checked ~ .radio-checkmark:after {
+      display: block;
+    }
+  }
+
+  // the new checkmark
+  &-checkmark {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 1rem);
+    height: 2rem;
+    width: 2rem;
+    background-color: $grey-light;
+    border-radius: 50%;
+    
+    // roundel indicator
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      //
+      top: 0.4rem;
+      left: 0.4rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      border: 0.3rem solid $white;
+    }
+  }
+
+
+  
+
 }

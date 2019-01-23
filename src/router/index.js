@@ -44,35 +44,86 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
+
+
+
 // week route(s)
 router.get("/:week", (req, res) => {
   // 1. check url
   const week = req.params.week;
   //console.log("req.params :", req.params);
+  
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
-    .then(data => {
+    .then(weekData => {
+      
       // 3. if found, get week details
-      if (data.length > 0) {
+      if (weekData.length > 0) {
         //console.log("Success", data);
 
         // console.log(data[0].week_name);
         // 4. get week name and id
-        const weekName = data[0].week_name;
-        const weekId = data[0].id;
+        const weekName = weekData[0].week_name;
+        const weekId = weekData[0].id;
 
         // 5. get tasks for by the user for the week
         dbhelpers
           .getTaskForUser("dave", weekId)
-          .then(data => {
-            //console.log("response from getTasksByWeek/router index: ", data);
+          .then(logData => {
+            // console.log("response from getTasksByWeek/router index: ", logData);
 
-            res.render("week", {
-              name: weekName,
-              tasks: data,
-              number: weekId
-            });
+
+
+            // _____________________________
+            // need to output unlogged tasks:
+            
+            // 6. get all tasks for the week - ignoring user logs
+            // - need to get url_slug from weeks too
+            dbhelpers.getTasksByWeek(weekId)
+              .then(taskRes => {
+
+                // 1. make 2 arrays of logged and unlogged ids
+                // 2. if id(s) exists in unlogged that doesn't exist in log, get that id(s)
+                // 3. push item(s) with id(s) to logData array unlogged item
+
+                // const logged = [];
+                // const unLogged = [];
+                // logData.map(log => logged.push(log.task_id));
+                // taskRes.map(task => unLogged.push(task.id));
+
+                // a better solution from here, ain't gonna lie:
+                // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
+                const allTasks = taskRes.filter(obj => logData.indexOf(obj) == -1);
+                console.log(allTasks, 'user logs: ', logData);
+                // doesn't get url slug
+
+                // render the week with all tasks
+                res.render("week", {
+                  name: weekName,
+                  tasks: logData,
+                  number: weekId
+                });
+
+
+
+
+              })
+              .catch(taskErr => {
+                console.log(taskErr);
+              })
+
+
+
+
+            // res.render("week", {
+            //   name: weekName,
+            //   tasks: logData,
+            //   number: weekId
+            // });
+
+
+
           })
           .catch(err => {
             // console.log("/weeks error: ", err);
