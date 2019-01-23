@@ -5,7 +5,7 @@ const env = require("env2");
 env("./config.env");
 
 // get local database by default
-let DB_URL = process.env.LOCAL_URL;
+let DB_URL = process.env.DATABASE_URL;
 
 // get test database for tests
 if (process.env.NODE_ENV === "test") {
