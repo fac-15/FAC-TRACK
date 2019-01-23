@@ -46,8 +46,6 @@ router.get("/dashboard", (req, res) => {
 
 // week route(s)
 router.get("/:week", (req, res) => {
-  
-
   // 1. check url
   const week = req.params.week;
   //console.log("req.params :", req.params);
@@ -88,8 +86,10 @@ router.get("/:week", (req, res) => {
                 logData.map(log => logged.push(log.task_id));
                 taskRes.map(task => allTasks.push(task.id));
 
-                const notCompleted = allTasks.filter(obj => logged.indexOf(obj) == -1);
-                console.log('not completed ', notCompleted);
+                const notCompleted = allTasks.filter(
+                  obj => logged.indexOf(obj) == -1
+                );
+                console.log("not completed ", notCompleted);
 
                 // a better solution from here, ain't gonna lie:
                 // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
@@ -99,22 +99,13 @@ router.get("/:week", (req, res) => {
                 //console.log(allTasks, "user logs: ", logData);
                 // doesn't get url slug
 
-
                 if (notCompleted.length > 0) {
                   // calling getTaskByTaskId
                   dbhelpers
-                  .getTaskByTaskId(notCompleted)
+                    .getTaskByTaskId(notCompleted)
                     .then(response => console.log(response))
                     .catch(error => console.log(error));
-
                 }
-                
-                
-
-
-
-
-
 
                 // render the week with all tasks
                 res.render("week", {

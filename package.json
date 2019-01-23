@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --forceExit --detectOpenHandles --coverage && NODE_ENV='test'",
-    "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
   },
   "jest": {
     "transform": {
@@ -48,5 +48,3 @@
     "supertest": "^3.3.0"
   }
 }
-
-   
