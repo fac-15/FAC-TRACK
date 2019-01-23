@@ -44,20 +44,16 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
-
-
-
 // week route(s)
 router.get("/:week", (req, res) => {
   // 1. check url
   const week = req.params.week;
   //console.log("req.params :", req.params);
-  
+
   // 2. see if item in url matches a url_slug for week in the database
   dbhelpers
     .weekExist(week)
     .then(weekData => {
-      
       // 3. if found, get week details
       if (weekData.length > 0) {
         //console.log("Success", data);
@@ -73,16 +69,14 @@ router.get("/:week", (req, res) => {
           .then(logData => {
             // console.log("response from getTasksByWeek/router index: ", logData);
 
-
-
             // _____________________________
             // need to output unlogged tasks:
-            
+
             // 6. get all tasks for the week - ignoring user logs
             // - need to get url_slug from weeks too
-            dbhelpers.getTasksByWeek(weekId)
+            dbhelpers
+              .getTasksByWeek(weekId)
               .then(taskRes => {
-
                 // 1. make 2 arrays of logged and unlogged ids
                 // 2. if id(s) exists in unlogged that doesn't exist in log, get that id(s)
                 // 3. push item(s) with id(s) to logData array unlogged item
@@ -94,8 +88,10 @@ router.get("/:week", (req, res) => {
 
                 // a better solution from here, ain't gonna lie:
                 // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
-                const allTasks = taskRes.filter(obj => logData.indexOf(obj) == -1);
-                console.log(allTasks, 'user logs: ', logData);
+                const allTasks = taskRes.filter(
+                  obj => logData.indexOf(obj) == -1
+                );
+                console.log(allTasks, "user logs: ", logData);
                 // doesn't get url slug
 
                 // render the week with all tasks
@@ -104,26 +100,16 @@ router.get("/:week", (req, res) => {
                   tasks: logData,
                   number: weekId
                 });
-
-
-
-
               })
               .catch(taskErr => {
                 console.log(taskErr);
-              })
-
-
-
+              });
 
             // res.render("week", {
             //   name: weekName,
             //   tasks: logData,
             //   number: weekId
             // });
-
-
-
           })
           .catch(err => {
             // console.log("/weeks error: ", err);
@@ -140,9 +126,6 @@ router.get("/:week", (req, res) => {
     });
 });
 
-
-
-
 // task routes
 router.get("/:week/:tasks", (req, res) => {
   // 1. check url
@@ -152,7 +135,6 @@ router.get("/:week/:tasks", (req, res) => {
   dbhelpers
     .weekExist(week)
     .then(data => {
-
       // 3. if found, get week details
       if (data.length > 0) {
         // console.log("weekdata: ", data);
@@ -164,18 +146,19 @@ router.get("/:week/:tasks", (req, res) => {
         const task_slug = req.params.tasks;
         // console.log(task_slug);
 
-        // 5. get task data
+        // 5. get task data - if user has logged it?
         dbhelpers
           .taskExist(task_slug)
           .then(taskData => {
-
             // 6. get task data for a specific user
             const task_id = taskData[0].id;
+
+            console.log(taskData[0]);
 
             dbhelpers
               .getSingleTaskForUser(task_id, "dave")
               .then(singleTask => {
-                // console.log("user singleTask", singleTask);
+                console.log("user singleTask", singleTask);
                 const name = singleTask[0].name;
                 const repoLink = singleTask[0].repo_link;
                 const completion = singleTask[0].completion;
@@ -185,6 +168,7 @@ router.get("/:week/:tasks", (req, res) => {
                 // 7. i) render log WITH user details
                 res.render("tasks", {
                   name,
+                  task_slug,
                   repoLink,
                   completion,
                   confidence,
@@ -194,7 +178,18 @@ router.get("/:week/:tasks", (req, res) => {
               .catch(taskErr => {
                 console.log(taskErr);
                 // 7. ii) render log WITHOUT user details - none entered for this task
-                res.render("tasks", { taskData });
+                // use the task slug to get the task from the database if user has no log for it
+
+                // dbhelpers
+                //   .getTaskBySlug(task_slug)
+                //   .then(unloggedTask => {
+                //     res.render("tasks", { unloggedTask });
+                //   })
+                //   .catch(err => {
+                //     console.log(err);
+                //   });
+
+                // res.render("tasks", { taskData });
               });
 
             // 7. render task / log view for a specific user
@@ -219,11 +214,13 @@ router.post("/logData", (req, res) => {
   //1. get user id from the url
   const userName = "dave";
   //2. get task id from the url
-  const taskSlug = req.params;
+  const taskSlug = req.params.tasks;
   console.log("taskSLug url", taskSlug);
-  //3. get the form input request
   const formEntry = req.body;
-  console.log("in the app", formEntry);
+  const a = { taskSlug, userName, formEntry };
+  //3. get the form input request
+
+  console.log("in the app", a);
   //4. add the data to the logs database table
   dbhelpers
     .logData(formEntry)
@@ -231,6 +228,7 @@ router.post("/logData", (req, res) => {
       res.redirect("back");
     })
     .catch(err => {
+      console.log("this is the err", err);
       res.status(400);
       res.redirect("back");
     });

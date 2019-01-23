@@ -7,7 +7,7 @@ const getSingleTaskForUser = (task_id, username) =>
       [task_id, username],
       (err, res) => {
         if (err) {
-          reject("User has not made a log for this task", err);
+          reject(err);
         } else {
           resolve(res.rows);
         }
