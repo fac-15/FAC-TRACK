@@ -13,10 +13,10 @@ The purpose of our app is to monitor a students progress and confidence around e
 
 ### User Journey
 
-Goal - to support learning by showing progress and confidence data
-Stakeholder - FAC student
-Journey - I can observe my progress in relation to the fac curriculum and fill in the gaps in my knowledge
-Tweet - FAC TRACK your workshops to max your learning experience.
+- Goal - to support learning by showing progress and confidence data
+- Stakeholder - FAC student
+- Journey - I can observe my progress in relation to the fac curriculum and fill in the gaps in my knowledge
+- Tweet - FAC TRACK your workshops to max your learning experience.
 
 
 ### Stuff for developers
