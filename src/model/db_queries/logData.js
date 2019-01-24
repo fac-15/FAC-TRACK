@@ -21,7 +21,7 @@ ON CONFLICT (task_id, user_id) DO UPDATE SET
         if (err) {
           reject(err);
         } else {
-          console.log("what is the res", res);
+          // console.log("what is the res", res);
           resolve(res);
         }
       }
