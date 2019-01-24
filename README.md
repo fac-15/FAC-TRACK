@@ -82,11 +82,11 @@ Our router.index file is our router and main controller. this queries the databa
 
 Database queries reside in the model folder, this also includes the database build script and the up to date database schemea
 
-Eslint & Prettier is used bolting onto the standard node rules, exlusing console logs equal off
+Eslint & Prettier is used bolting onto the standard node rules, excluding console logs equal off
 
-There is one main layout page named main.hbs and the other pages are served via the dashboard,home,tasks and week.hbs. These link into the helpers files. 
+The statis page across all pages is the main layout page named main.hbs and the other pages are served via the dashboard,home,tasks and week.hbs. These link into our helpers files. 
 
 The dashboard visuals and comuptation is done within the public js folder, named dashboard.js.
 
 
-### Explaing the database schemea & some of the queries and posts with the joining on tables
+### Explainin the database schemea & some of the queries and posts plus joining of tables etc
