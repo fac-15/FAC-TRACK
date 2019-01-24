@@ -34,7 +34,7 @@ router.get("/dashboard", (req, res) => {
           taskCount(logsRes)
             .then(taskRes => {
               //console.log(taskRes);
-              res.render("dashboard", { weeks: taskRes });
+              res.render("dashboard", { weeks: taskRes, name: 'Dashboard', backBtn: 'hidden' });
             })
             .catch(taskErr => {
               console.log("taskCount function error: ", taskErr);
@@ -158,90 +158,102 @@ router.get("/:week", (req, res) => {
     });
 });
 
+
+
+
 // task routes
 router.get("/:week/:tasks", (req, res) => {
-  // 1. check url
-  const week = req.params.week;
+  
+  // 1. if first part of url matches check url_slug (for week)
+  // - add this to the output object - get back to parent page
+  const url_slug = req.params.week;
 
-  // 2. see if item in url matches a url_slug for week in the database
-  dbhelpers
-    .weekExist(week)
-    .then(data => {
-      // 3. if found, get week details
-      if (data.length > 0) {
-        // console.log("weekdata: ", data);
+  dbhelpers.weekExist(url_slug)
+    .then(weekData => {
 
-        // 4. get week name and id and task from url_slug
-        const weekId = data[0].id;
-        const weekName = data[0].week_name;
+      if (weekData.length > 0) {
 
+        // 2. if second part of url matches task_slug
         const task_slug = req.params.tasks;
-        // console.log(task_slug);
 
-        // 5. get task data - if user has logged it?
-        dbhelpers
-          .taskExist(task_slug)
+        dbhelpers.taskExist(task_slug)
           .then(taskData => {
-            // 6. get task data for a specific user
+
+
+
+            // 3. get task data for a specific user
             const task_id = taskData[0].id;
-
-            console.log(taskData[0]);
-
-            dbhelpers
-              .getSingleTaskForUser(task_id, "dave")
+            dbhelpers.getSingleTaskForUser(task_id, "dave")
               .then(singleTask => {
-                console.log("user singleTask", singleTask);
-                const name = singleTask[0].name;
-                const repoLink = singleTask[0].repo_link;
-                const completion = singleTask[0].completion;
-                const confidence = singleTask[0].confidence;
-                const notes = singleTask[0].notes;
 
-                // 7. i) render log WITH user details
-                res.render("tasks", {
-                  name,
-                  task_slug,
-                  repoLink,
-                  completion,
-                  confidence,
-                  notes
-                });
+                // radio buttons
+                const radios = [
+                  { label: 'Low', color: 'red', value: 1 },
+                  { label: 'Medium', color: 'yellow', value: 2 },
+                  { label: 'High', color: 'green', value: 3 }
+                ]
+
+                // 4. user has a log for this task
+                if (singleTask.length > 0) {
+                  
+                  // create an object to send to the page
+                  const loggedTask = singleTask[0];
+                  loggedTask.url_slug = url_slug; // comes from week, not task
+                  const { task_id, name, repo_link, completion, confidence, notes, task_slug } = loggedTask;
+
+                  // set checked state of radio buttons
+                  const checked = confidence - 1;
+                  radios[checked].checked = true;
+
+                  res.render("tasks", { task_id, name, repo_link, completion, confidence, notes, task_slug, url_slug, radios, menu_url: url_slug });
+                }
+
+                // 5. user has not logged a task
+                else {
+
+                  // create an object to send to the page
+                  const unLoggedTask = taskData[0];
+                  unLoggedTask.url_slug = url_slug;
+                  const { id, name, repo_link, task_slug } = unLoggedTask;
+                  // call the id the task_id for use in posting task to database
+                  const task_id = id;
+
+                  res.render("tasks", { task_id, name, repo_link, task_slug, url_slug, radios });
+                }
+
               })
               .catch(taskErr => {
-                console.log(taskErr);
-                // 7. ii) render log WITHOUT user details - none entered for this task
-                // use the task slug to get the task from the database if user has no log for it
-
-                // dbhelpers
-                //   .getTaskBySlug(task_slug)
-                //   .then(unloggedTask => {
-                //     res.render("tasks", { unloggedTask });
-                //   })
-                //   .catch(err => {
-                //     console.log(err);
-                //   });
-
-                // res.render("tasks", { taskData });
+                // console.log('error in getSingleTaskForUser() ', taskErr);
+                res.render("404");
+                return;
               });
 
-            // 7. render task / log view for a specific user
           })
           .catch(taskErr => {
-            console.log("Error loading the error plage", taskErr);
+            // console.log("task not found", taskErr);
             res.render("404");
             return;
           });
-      } else {
+      }
+      
+      else {
         // console.log("week not found");
         res.render("404");
         return;
       }
     })
-    .catch(err => {
-      console.log(err);
+    // error in weekExist function
+    .catch(weekErr => {
+      // console.log(weekErr);
+      res.render("500");
+      return;
     });
 });
 
+
+
+
+// post request from task view
 router.post("/logData", (req, res) => {
   //1. get user id from the url
   const userName = "dave";
