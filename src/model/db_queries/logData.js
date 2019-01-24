@@ -4,8 +4,8 @@ const db = require("../db/db_connection");
 
 const logData = obj =>
   new Promise((resolve, reject) => {
-    const { completion, confidence, notes } = obj;
-    console.log("inside db the obj", obj);
+    const { completion, confidence, notes, task_id, user_id } = obj;
+    // console.log("inside db the obj", obj);
     db.query(
       `INSERT INTO logs (completion, confidence, notes, task_id, user_id)
 VALUES ($1,$2,$3,$4,$5)
@@ -16,7 +16,7 @@ ON CONFLICT (task_id, user_id) DO UPDATE SET
     task_id = EXCLUDED.task_id,
     user_id = EXCLUDED.user_id;
     `,
-      [completion, confidence, notes, 1, 5],
+      [completion, confidence, notes, task_id, user_id],
       (err, res) => {
         if (err) {
           reject(err);

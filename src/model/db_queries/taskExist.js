@@ -1,6 +1,6 @@
 const db = require("../db/db_connection");
 
-const checkTasksList = task =>
+const taskExist = task =>
   new Promise((resolve, reject) => {
     db.query(`SELECT * FROM tasks WHERE task_slug = '${task}'`, (err, res) => {
       if (err) {
@@ -11,4 +11,4 @@ const checkTasksList = task =>
     });
   });
 
-module.exports = checkTasksList;
+module.exports = taskExist;
