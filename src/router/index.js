@@ -218,7 +218,7 @@ router.get("/:week/:tasks", (req, res) => {
                   // call the id the task_id for use in posting task to database
                   const task_id = id;
 
-                  res.render("tasks", { task_id, name, repo_link, task_slug, url_slug, radios });
+                  res.render("tasks", { task_id, name, repo_link, task_slug, url_slug, radios, menu_url: url_slug });
                 }
 
               })
