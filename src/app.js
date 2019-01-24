@@ -2,7 +2,7 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
-const favicon = require("serve-favicon")
+const favicon = require("serve-favicon");
 // yet to write files
 const routes = require("./router/index");
 const helpers = require("./views/helpers/index");
@@ -33,7 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // static assets
 app.use(express.static(path.join(__dirname, "..", "public")));
-app.use(favicon(path.join(__dirname, "..", "public", "resources/images/ft-icon.ico")));
+
+app.use(
+  favicon(path.join(__dirname, "..", "public", "resources/images/ft-icon.ico"))
+);
 
 
 app.set("port", process.env.PORT || 5002);

@@ -95,14 +95,31 @@ router.get("/:week", (req, res) => {
                 logData.map(log => logged.push(log.task_id));
                 taskRes.map(task => allTasks.push(task.id));
 
+<<<<<<< HEAD
                 // 2.
                 const notCompleted = allTasks.filter(
                   obj => logged.indexOf(obj) === -1
                 );
 
                 // must have unlogged tasks to run this
+=======
+                const notCompleted = allTasks.filter(
+                  obj => logged.indexOf(obj) == -1
+                );
+                console.log("not completed ", notCompleted);
+
+                // a better solution from here, ain't gonna lie:
+                // https://stackoverflow.com/questions/15912538/get-the-unique-values-from-two-arrays-and-put-them-in-another-array
+                // const allTasks = taskRes.filter(
+                //   obj => logData.indexOf(obj) == -1
+                // );
+                //console.log(allTasks, "user logs: ", logData);
+                // doesn't get url slug
+
+>>>>>>> 79db7c987a6c7c31ae98aee046df3526e3e9da99
                 if (notCompleted.length > 0) {
                   dbhelpers
+<<<<<<< HEAD
                     .getTasksById(notCompleted)
                     .then(response => {
                       // console.log(response)
@@ -130,6 +147,19 @@ router.get("/:week", (req, res) => {
                     number: weekId
                   });
                 }
+=======
+                    .getTaskByTaskId(notCompleted)
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error));
+                }
+
+                // render the week with all tasks
+                res.render("week", {
+                  name: weekName,
+                  tasks: logData,
+                  number: weekId
+                });
+>>>>>>> 79db7c987a6c7c31ae98aee046df3526e3e9da99
               })
               .catch(taskErr => {
                 console.log(taskErr);
