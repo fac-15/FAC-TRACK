@@ -2,9 +2,10 @@
 
   <section class="main-section header">
     <h1>{{name}}</h1>
-    <a href="{{repoLink}}" target="_blank" type="button">Repo Link</a>
+    <a href="{{loggedTask}}" target="_blank" type="button">Repo Link</a>
 
-<!-- {{task_slug}} -->
+<!-- for back button: {{url_slug}}/{{task_slug}} -->
+    {{#if status}}<p>You have not logged this task yet</p>{{else}}{{/if}}
 
      <form class="form-log" action="/logData"  method="post">
 
@@ -12,7 +13,7 @@
         <h3>Complete:</h3>
 
         <label class="checkbox-label">Completed
-          <input class="checkbox-input" type="checkbox" value="true" name="completion"/>
+          <input class="checkbox-input" type="checkbox" {{#if completion}}checked{{else}}{{/if}} value="true" name="completion"/>
           <span class="checkbox-checkmark"></span>
         </label>
 
@@ -22,30 +23,21 @@
         <h3>Confidence Level:</h3>
         <section class="completed radio-group">
 
+          {{#each radios}}
           <label class="radio-label">
-            <span class="radio-title">Low</span>
-            <input class="radio-input red" type="radio" value="1" name="confidence"/>
+            <span class="radio-title">{{label}}</span>
+            <input class="radio-input {{color}}" type="radio" value="{{value}}" name="confidence" {{radioState checked}} />
             <span class="radio-checkmark"></span>
           </label>
-
-          <label class="radio-label">
-            <span class="radio-title">Medium</span>
-            <input class="radio-input yellow" type="radio" value="2" name="confidence"/>
-            <span class="radio-checkmark"></span>
-          </label>
-
-          <label class="radio-label">
-            <span class="radio-title">High</span>
-            <input class="radio-input green" type="radio" value="3" name="confidence"/>
-            <span class="radio-checkmark"></span>
-          </label>
+          {{/each}}
 
         </section>
       </section>
 
 
       <h3>Notes:</h2>
-      <textarea class="textarea-input" rows="10" cols="40" name="notes"></textarea>
+      <textarea class="textarea-input" rows="10" cols="40" name="notes">{{notes}}</textarea>
+      <input class="text-input hidden task-id" type="text" value="{{task_id}}"/>
       <section class="form-section right">
         <input class="button-input" type="submit" value="Save"/>
       </section>

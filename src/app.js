@@ -26,21 +26,15 @@ app.engine(
   })
 );
 
-// load public folder
-app.use(express.static(path.join(__dirname, "/..public"), { maxAge: "30d" }));
 
+// bodyparser
 app.use(bodyParser.json());
-
-// parse urlencoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// static assets
 app.use(express.static(path.join(__dirname, "..", "public")));
-
-
 app.use(favicon(path.join(__dirname, "..", "public", "resources/images/ft-icon.ico")));
 
-// post data request from logs, takes the req.body and sends it throught the database query
-// page refreshes
 
 app.set("port", process.env.PORT || 5002);
 app.use(routes);
