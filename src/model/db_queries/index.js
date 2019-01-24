@@ -1,13 +1,25 @@
 module.exports = {
-  getAllWeeks: require("./getAllWeeks"),
-  getTasksByWeek: require("./getTasksByWeek"),
-  getTaskForUser: require("./getTaskForUser"),
-  logData: require("./logData"),
-  getSingleTaskForUser: require("./getSingleTaskForUser"),
+  
+  // weeks
   weekExist: require("./weekExist"),
+  getAllWeeks: require("./getAllWeeks"),
+
+  // tasks
   taskExist: require("./taskExist"),
-  getAllTasksForUser: require("./getAllTasksForUser"),
   getAllTasks: require("./getAllTasks"),
+  getTaskForUser: require("./getTaskForUser"),
+  getAllTasksForUser: require("./getAllTasksForUser"),
+  getSingleTaskForUser: require("./getSingleTaskForUser"),
+  getTasksByWeek: require("./getTasksByWeek"),
   getTaskBySlug: require("./getTaskBySlug"),
-  getTasksById: require("./getTasksById")
+  getTasksById: require("./getTasksById"),
+  
+  // logs
+  logData: require("./logData"),
+
+  // unused
+  // getTaskByTaskId
+  // getConfidenceForUser
+  // getRepoLink
+  
 };

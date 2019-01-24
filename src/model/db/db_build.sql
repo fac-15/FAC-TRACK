@@ -110,20 +110,20 @@ INSERT INTO users (username, email, password) values ('bill', 'vbruckman7@dyndns
 
 --logs table
 -- sheila id = 1
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 3, 1);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 1);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 1);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 2, 1);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 3, 1);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 1);
 
--- dave id = 2
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 2, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 5, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 6, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 7, 2);
-INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '3', 'test database notes', 8, 2);
+-- -- dave id = 2
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '1', 'test database notes', 1, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 2, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '2', 'test database notes', 3, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('TRUE', '3', 'test database notes', 4, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 5, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '1', 'test database notes', 6, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '2', 'test database notes', 7, 2);
+-- INSERT INTO logs (completion, confidence, notes, task_id, user_id) values ('FALSE', '3', 'test database notes', 8, 2);
 
 
 -- expecting for dave:

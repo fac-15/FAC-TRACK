@@ -244,14 +244,14 @@ h2 {
 h3 {
   font-size: 1.1rem;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.4;
   margin: 0 0 1rem; }
   @media only screen and (min-width: 480px) {
     h3 {
       font-size: 1.4rem; } }
   @media only screen and (min-width: 600px) {
     h3 {
-      font-size: 2.2rem; } }
+      font-size: 1.7rem; } }
   h3 span {
     font-weight: 400; }
 
@@ -282,6 +282,8 @@ h3 {
     color: #ffffff; }
   .nav-menu .menu_icon {
     fill: #ffffff; }
+  .nav-menu h2 {
+    margin: 0; }
 
 .form-log {
   width: 100%;
@@ -309,7 +311,8 @@ h3 {
   color: #ffffff;
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
-  transition: all ease-in-out 0.3s; }
+  transition: all ease-in-out 0.3s;
+  text-decoration: none; }
   .button-input:hover {
     background-color: #a81120; }
 
@@ -419,6 +422,9 @@ h3 {
 .page-content {
   padding-bottom: 4rem; }
 
+.home-page h1 {
+  margin-bottom: 6rem; }
+
 .week-view {
   display: block;
   width: 100%;
@@ -470,6 +476,12 @@ h3 {
     padding-left: 0; }
   .dashboard-item:nth-child(even) {
     padding-right: 0; }
+  @media only screen and (min-width: 1000px) {
+    .dashboard-item {
+      width: 22.5%;
+      margin-bottom: 2rem; }
+      .dashboard-item:nth-child(odd), .dashboard-item:nth-child(even) {
+        padding: 1rem; } }
 .dashboard-progress {
   display: flex;
   align-items: center;

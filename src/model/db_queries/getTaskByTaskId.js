@@ -1,3 +1,5 @@
+// unused
+
 const db = require("../db/db_connection");
 
 const getTaskByTaskId = id => {
