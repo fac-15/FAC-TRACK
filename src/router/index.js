@@ -262,7 +262,7 @@ router.post("/*", (req, res) => {
 
   //1. get task_url from the req headers and split it by /
   const task_url = req.headers.referer.split("/")[4];
-  console.log("taskSLug url", task_url);
+  // console.log("taskSLug url", task_url);
   //3. get the form input request
   const formEntry = req.body;
   //4. add boths objects together
@@ -270,20 +270,20 @@ router.post("/*", (req, res) => {
   const completion = !!formEntry.completion;
   // const notes = fo
   const confidence = formEntry.confidence;
-  console.log(confidence);
+  // console.log(confidence);
   const notes = formEntry.notes;
 
   // console.log("in the app", a);
 
   //4. get the task_id from the slug
   dbhelpers.taskExist(task_url).then(taskData => {
-    console.log("taskData", taskData[0].week_id);
-    const task_id = taskData[0].week_id;
+    // console.log("taskData", taskData[0].id);
+    const task_id = taskData[0].id;
     const a = { completion, confidence, notes, task_id, user_id };
     dbhelpers
       .logData(a)
       .then(userInput => {
-        console.log("userInput", userInput);
+        // console.log("userInput", userInput);
         res.redirect("back");
       })
       .catch(err => {
