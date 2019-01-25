@@ -8,7 +8,10 @@
 }
 
 
-
+// home page
+.home-page h1 {
+  margin-bottom: 6rem;
+}
 
 
 
@@ -94,6 +97,14 @@
         // items on the right
         &:nth-child(even){
           padding-right: 0;
+        }
+        // 4 columns wide
+        @media only screen and (min-width: 1000px) {
+          width: 22.5%;
+          margin-bottom: 2rem;
+          &:nth-child(odd), &:nth-child(even) {
+            padding: 1rem;
+          }
         }
     }
     // progress chart

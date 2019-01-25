@@ -1,3 +1,5 @@
+// unused function
+
 const db = require("../db/db_connection");
 
 const getConfidenceForUser = (user_id, weekId) =>

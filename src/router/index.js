@@ -13,7 +13,7 @@ const router = express.Router();
 
 // home route
 router.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {backBtn: "hidden"});
 });
 
 // dashboard
@@ -39,15 +39,15 @@ router.get("/dashboard", (req, res) => {
               });
             })
             .catch(taskErr => {
-              console.log("taskCount function error: ", taskErr);
+              // console.log("taskCount function error: ", taskErr);
             });
         })
         .catch(logsErr => {
-          console.log("userLogs function error: ", logsErr);
+          // console.log("userLogs function error: ", logsErr);
         });
     })
     .catch(err => {
-      console.log("getAllWeeks error: ", err);
+      // console.log("getAllWeeks error: ", err);
       res.status(err, 500);
     });
 });
@@ -100,30 +100,30 @@ router.get("/:week", (req, res) => {
                   obj => logged.indexOf(obj) === -1
                 );
 
-                // must have unlogged tasks to run this
+                // user has unlogged tasks for the week
                 if (notCompleted.length > 0) {
                   dbhelpers
                     .getTasksById(notCompleted)
                     .then(response => {
-                      // console.log(response)
 
                       const allTasksForWeek = [...logData, ...response];
 
-                      // render with with unlogged tasks added to logData
+                      // render with unlogged tasks added to logData
                       res.render("week", {
                         name: weekName,
                         tasks: allTasksForWeek,
                         number: weekId
                       });
                     })
-                    .catch(error =>
-                      console.log("error getting outstanding tasks: ", error)
-                    );
+                    .catch(error => {
+                      // console.log("error getting outstanding tasks: ", error)
+                      res.render("500");
+                      return;
+                    });
                 }
 
-                // user has made a log for all tasks
+                // user has logged all tasks for the week
                 else {
-                  // render the week with all tasks
                   res.render("week", {
                     name: weekName,
                     tasks: logData,
@@ -132,7 +132,7 @@ router.get("/:week", (req, res) => {
                 }
               })
               .catch(taskErr => {
-                console.log(taskErr);
+                // console.log(taskErr);
               });
           })
           .catch(err => {
@@ -146,7 +146,7 @@ router.get("/:week", (req, res) => {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
     });
 });
 
@@ -268,6 +268,8 @@ router.post("/*", (req, res) => {
   //4. add boths objects together
   // console.log(formEntry.completion, " completion");
   const completion = !!formEntry.completion;
+  // const completion = formEntry.completion ? true : false;
+
   // const notes = fo
   const confidence = formEntry.confidence;
   // console.log(confidence);
@@ -287,7 +289,7 @@ router.post("/*", (req, res) => {
         res.redirect("back");
       })
       .catch(err => {
-        console.log("this is the err", err);
+        // console.log("this is the err", err);
         res.status(400);
         res.redirect("back");
       });
